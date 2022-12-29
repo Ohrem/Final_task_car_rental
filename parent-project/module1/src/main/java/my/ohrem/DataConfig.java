@@ -67,9 +67,11 @@ public class DataConfig {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource);
         sessionFactory.setAnnotatedClasses(
-                Client.class,
-                ClientDetail.class,
-                ClientPhoto.class
+                CarEntity.class,
+                OrderEntity.class,
+                PaymentEntity.class,
+                UserEntity.class,
+                UserRole.class
         );
         sessionFactory.setHibernateProperties(hibernateProperties);
         return sessionFactory;
