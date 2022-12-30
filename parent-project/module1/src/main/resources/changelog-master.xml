@@ -7,35 +7,48 @@
     <changeSet id="1" author="ohrem25032002@gmail.com">
         <sql>
             CREATE TABLE IF NOT EXISTS `car` (
-                `id` BIGINT(19) PRIMARY KEY,
-                `brand` VARCHAR(64) NOT NULL,
-                `model` VARCHAR(64) NOT NULL,
-                `color` VARCHAR(64) NOT NULL,
-                `price` DECIMAL NOT NULL
-                );
+            `id` BIGINT(19) PRIMARY KEY,
+            `brand` VARCHAR(64) NOT NULL,
+            `model` VARCHAR(64) NOT NULL,
+            `color` VARCHAR(64) NOT NULL,
+            `price` DECIMAL NOT NULL
+            );
         </sql>
     </changeSet>
     <changeSet id="2" author="ohrem25032002@gmail.com">
         <sql>
             CREATE TABLE IF NOT EXISTS `payment` (
-                `id` BIGINT(19) PRIMARY KEY,
-                `paymentDate` DATE NOT NULL,
-                `paymentSum` DECIMAL NOT NULL,
-                `order_id` BIGINT REFERENCES orders (id)
-                );
+            `id` BIGINT(19) PRIMARY KEY,
+            `paymentDate` DATE NOT NULL,
+            `paymentSum` DECIMAL NOT NULL,
+            `order_id` BIGINT REFERENCES orders (id)
+            );
         </sql>
     </changeSet>
     <changeSet id="3" author="ohrem25032002@gmail.com">
         <sql>
             CREATE TABLE IF NOT EXISTS `orders` (
-                `id` BIGINT(19) PRIMARY KEY,
-                `name` VARCHAR(64) NOT NULL,
-                `surname` VARCHAR(64) NOT NULL,
-                `email` VARCHAR(64) UNIQUE NOT NULL,
-                `password` VARCHAR (64) NOT NULL,
-                `phone` VARCHAR(64) NOT NULL,
-                `balance` DECIMAL,
-                `role` VARCHAR(64) NOT NULL
+            `id` BIGINT(19) PRIMARY KEY,
+            `begin_date` DATE,
+            `end_date` DATE,
+            `message` VARCHAR(64) NOT NULL,
+            `car_id` BIGINT REFERENCES car(id),
+            `payment_id` BIGINT REFERENCES payment(id),
+            `user_id` BIGINT REFERENCES user(id)
+            );
+        </sql>
+    </changeSet>
+    <changeSet id="4" author="ohrem25032002@gmail.com">
+        <sql>
+            CREATE TABLE IF NOT EXISTS `user` (
+            `id` BIGINT(19) PRIMARY KEY,
+            `name` VARCHAR(64) NOT NULL,
+            `surname` VARCHAR(64) NOT NULL,
+            `email` VARCHAR(64) UNIQUE NOT NULL,
+            `password` VARCHAR (64) NOT NULL,
+            `phone` VARCHAR(64) NOT NULL,
+            `balance` DECIMAL,
+            `role` VARCHAR(64) NOT NULL
             );
         </sql>
     </changeSet>
