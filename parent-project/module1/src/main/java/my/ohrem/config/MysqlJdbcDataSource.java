@@ -1,4 +1,4 @@
-package my.ohrem;
+package my.ohrem.config;
 
 import lombok.SneakyThrows;
 

@@ -1,4 +1,4 @@
-package my.ohrem.dao;
+package my.ohrem.repository;
 
 import my.ohrem.model.UserEntity;
 import org.hibernate.SessionFactory;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class UserDaoImpl implements UserDao {
+public class UserEntityDaoImpl implements UserEntityDao {
 
     @Autowired
     private SessionFactory sessionFactory;

@@ -50,7 +50,7 @@
             <artifactId>spring-webmvc</artifactId>
         </dependency>
         <dependency>
-            <groupId>it.academy</groupId>
+            <groupId>my.ohrem</groupId>
             <artifactId>module1</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
@@ -65,7 +65,12 @@
             <version>5.7.5</version>
         </dependency>
         <dependency>
-            <groupId>it.academy</groupId>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>my.ohrem</groupId>
             <artifactId>module3</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
@@ -80,7 +85,7 @@
     </dependencies>
 
     <build>
-        <finalName>ohrem</finalName>
+        <finalName>hello</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -92,7 +97,7 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <path>/ohrem</path>
+                    <path>/hello</path>
                     <username>tomcat</username>
                     <password>tomcat</password>
                 </configuration>

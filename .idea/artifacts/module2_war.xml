@@ -9,7 +9,7 @@
         <unpackNestedArchives>false</unpackNestedArchives>
       </options>
     </properties>
-    <root id="archive" name="ohrem.war">
+    <root id="archive" name="hello.war">
       <element id="artifact" artifact-name="module2:war exploded" />
     </root>
   </artifact>

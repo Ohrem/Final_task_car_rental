@@ -1,4 +1,4 @@
-<footer class="text-center text-lg-start bg-white text-muted">
+<footer class="text-center text-lg-start bg-blue text-muted">
     <!-- Section: Social media -->
     <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
         <!-- Left -->

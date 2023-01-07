@@ -1,7 +1,8 @@
 package my.ohrem.servlet;
 
-import my.first.DataConfig;
-import my.first.service.ServiceContextConfig;
+
+import my.ohrem.config.DataConfig;
+import my.ohrem.service.config.ServiceContextConfig;
 import my.ohrem.web.WebConfiguration;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
@@ -32,6 +33,5 @@ public class ServletContainerInitializerImpl implements ServletContainerInitiali
         servletRegistration.addMapping("*.jpg");
         // *.view - GET
         // *.action - POST
-
     }
 }

@@ -1,4 +1,4 @@
-package my.ohrem;
+package my.ohrem.config;
 
 import my.ohrem.model.*;
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -17,7 +17,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan(basePackages = "my.ohrem.dao")
+@ComponentScan(basePackages = "my.ohrem.repository")
 @PropertySource(value = {
         "classpath:/outlet.jdbc.properties",
         "classpath:/hibernate.properties"
@@ -71,7 +71,8 @@ public class DataConfig {
                 OrderEntity.class,
                 PaymentEntity.class,
                 UserEntity.class,
-                UserRole.class
+                UserRole.class,
+                UserPhoto.class
         );
         sessionFactory.setHibernateProperties(hibernateProperties);
         return sessionFactory;

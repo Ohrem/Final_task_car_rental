@@ -14,7 +14,8 @@ public class WebConfiguration {
 
     @Bean
     public InternalResourceViewResolver internalResourceViewResolver() {
-        return new InternalResourceViewResolver("/WEB-INF/templates/", ".jsp");
+//        return new InternalResourceViewResolver("/WEB-INF/templates/", ".jsp");
+        return new InternalResourceViewResolver("/pages/",".jsp");
     }
 
 

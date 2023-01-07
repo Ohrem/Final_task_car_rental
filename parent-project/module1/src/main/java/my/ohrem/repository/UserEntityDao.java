@@ -1,10 +1,10 @@
-package my.ohrem.dao;
+package my.ohrem.repository;
 
 import my.ohrem.model.UserEntity;
 
 import java.util.List;
 
-public interface UserDao {
+public interface UserEntityDao {
 
     void create(UserEntity user);
 

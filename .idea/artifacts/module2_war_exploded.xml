@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="module2:war exploded">
-    <output-path>$PROJECT_DIR$/parent-project/module2/target/ohrem</output-path>
+    <output-path>$PROJECT_DIR$/parent-project/module2/target/hello</output-path>
     <properties id="maven-jee-properties">
       <options>
         <exploded>true</exploded>
@@ -27,7 +27,9 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.3.23" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context:5.3.23" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:5.3.23" />
-          <element id="library" level="project" name="Maven: it.academy:module1:1.0-SNAPSHOT" />
+          <element id="archive" name="module1-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="module1" />
+          </element>
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:5.6.12.Final" />
           <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging:3.4.3.Final" />
           <element id="library" level="project" name="Maven: javax.persistence:javax.persistence-api:2.2" />
@@ -61,12 +63,15 @@
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:5.7.5" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-crypto:5.7.5" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:5.7.5" />
-          <element id="library" level="project" name="Maven: it.academy:module3:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: org.modelmapper:modelmapper:3.0.0" />
+          <element id="archive" name="module3-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="module3" />
+          </element>
           <element id="library" level="project" name="Maven: net.bytebuddy:byte-buddy:1.12.14" />
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/parent-project/module2/target/ohrem/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/parent-project/module2/target/hello/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="module2/web/Web" />
     </root>

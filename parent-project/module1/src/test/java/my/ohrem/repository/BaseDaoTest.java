@@ -1,9 +1,8 @@
-package my.ohrem.dao;
+package my.ohrem.repository;
 
-import lombok.Data;
 import lombok.SneakyThrows;
-import my.ohrem.DataConfig;
-import my.ohrem.MysqlJdbcDataSource;
+import my.ohrem.config.DataConfig;
+import my.ohrem.config.MysqlJdbcDataSource;
 import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.ext.mysql.MySqlConnection;
 import org.junit.BeforeClass;

@@ -52,4 +52,19 @@
             );
         </sql>
     </changeSet>
+    <changeSet id="5" author="ohrem25032002@gmail.com">
+        <sql>
+            CREATE TABLE IF NOT EXISTS `user_photo`
+            (
+                `ID`         VARCHAR(256) PRIMARY KEY NOT NULL,
+                `user_id`    BIGINT(19)               NOT NULL,
+                `user_photo` MEDIUMBLOB               NOT NULL,
+                CONSTRAINT `F_EMPLOYEEID_PHOTO`
+                FOREIGN KEY (`user_id`)
+                REFERENCES `user` (`id`)
+                ON DELETE CASCADE
+                ON UPDATE CASCADE
+                );
+        </sql>
+    </changeSet>
 </databaseChangeLog>
