@@ -21,6 +21,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/hello/cars.html">All Cars</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/hello/getAllUsers.html">All Users</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                            aria-expanded="false">

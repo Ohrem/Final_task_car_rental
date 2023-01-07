@@ -2,6 +2,8 @@ package my.ohrem.repository;
 
 import my.ohrem.model.CarEntity;
 
+import java.util.List;
+
 public interface CarEntityDao {
 
     void create(CarEntity car);
@@ -13,4 +15,6 @@ public interface CarEntityDao {
     void delete(long id);
 
     void delete(CarEntity car);
+
+    List<CarEntity> readAll();
 }

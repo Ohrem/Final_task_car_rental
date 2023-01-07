@@ -20,7 +20,7 @@ public class UserController {
 
     }
 
-    @GetMapping({"/","/getAllUsers.html"})
+    @GetMapping("/getAllUsers.html")
     public ModelAndView getAllUsers() {
         return new ModelAndView("getAllUsers",
                 Map.of("users", userService.getAll()));

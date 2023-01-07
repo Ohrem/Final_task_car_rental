@@ -8,14 +8,14 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
-@ComponentScan(basePackages = "my.ohrem.web")
+@ComponentScan(basePackages = {"my.ohrem.web"})
 @EnableWebMvc
 public class WebConfiguration {
 
     @Bean
     public InternalResourceViewResolver internalResourceViewResolver() {
-//        return new InternalResourceViewResolver("/WEB-INF/templates/", ".jsp");
-        return new InternalResourceViewResolver("/pages/",".jsp");
+        return new InternalResourceViewResolver("/WEB-INF/templates/", ".jsp");
+//        return new InternalResourceViewResolver("/pages/",".jsp");
     }
 
 
