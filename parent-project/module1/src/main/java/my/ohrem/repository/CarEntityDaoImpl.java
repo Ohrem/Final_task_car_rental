@@ -4,6 +4,7 @@ import my.ohrem.config.MysqlJdbcDataSource;
 import my.ohrem.model.CarEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 @Transactional
@@ -59,22 +61,14 @@ public class CarEntityDaoImpl implements CarEntityDao {
 
     @Override
     public List<CarEntity> readAll() {
-        List<CarEntity> cars = new ArrayList<>();
-        try (final Connection connection = dataSource.getConnection()) {
-            final Statement statement = connection.createStatement();
-            final ResultSet resultSet = statement.executeQuery("SELECT * FROM car");
-            while (resultSet.next()) {
-                final CarEntity carInfo = new CarEntity();
-                carInfo.setId(resultSet.getLong("id"));
-                carInfo.setBrand(resultSet.getString("brand"));
-                carInfo.setModel(resultSet.getString("model"));
-                carInfo.setColor(resultSet.getString("color"));
-                carInfo.setPrice(resultSet.getDouble("price"));
-                cars.add(carInfo);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return cars;
+        return sessionFactory.getCurrentSession().createQuery("from CarEntity", CarEntity.class).list();
+    }
+
+    public List<CarEntity> findCarByBrand(String brand) {
+        List<CarEntity> carEntityList = sessionFactory.getCurrentSession().createQuery("from CarEntity", CarEntity.class).list();
+
+        return carEntityList.stream()
+                .filter(car -> car.getBrand().equals(brand))
+                .collect(Collectors.toList());
     }
 }

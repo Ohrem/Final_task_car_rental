@@ -31,8 +31,12 @@ public class UserEntity implements BaseEntity<Long> {
     private String phone;
     @Enumerated(value = EnumType.STRING)
     private UserRole role;
-    private BigDecimal balance;
+    private Double balance; //TODO CHANGED FROM BIGDECIMAL TO DOUBLE
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "userEntities", fetch = FetchType.EAGER)
-    private List<OrderEntity> orderList;
+    //TODO OneToOne!
+    /*@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "userEntities", fetch = FetchType.EAGER)
+    private List<OrderEntity> orderList;*/
+
+    @OneToOne //TODO !!!!!!
+    private OrderEntity orderEntity;
 }

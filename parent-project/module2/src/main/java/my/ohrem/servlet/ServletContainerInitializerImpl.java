@@ -2,6 +2,7 @@ package my.ohrem.servlet;
 
 
 import my.ohrem.config.DataConfig;
+import my.ohrem.security.WebSecurityConfig;
 import my.ohrem.service.config.ServiceContextConfig;
 import my.ohrem.web.WebConfiguration;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -22,6 +23,7 @@ public class ServletContainerInitializerImpl implements ServletContainerInitiali
         context.register(WebConfiguration.class);
         context.register(DataConfig.class);
         context.register(ServiceContextConfig.class);
+        context.register(WebSecurityConfig.class);
 
         DispatcherServlet dispatcherServlet =
                 new DispatcherServlet(context);

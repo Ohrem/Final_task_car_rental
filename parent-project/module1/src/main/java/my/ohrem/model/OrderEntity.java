@@ -40,6 +40,5 @@ public class OrderEntity implements BaseEntity<Long> {
     @JoinColumn(name = "user_id")
     private UserEntity userEntities;
 
-    //TODO private OrderStatus orderStatus;
     private String message;
 }

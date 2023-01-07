@@ -35,4 +35,8 @@ public class OrderEntityDaoImpl implements OrderEntityDao {
         OrderEntity loadedOrder = sessionFactory.getCurrentSession().load(OrderEntity.class, order.getId());
         sessionFactory.getCurrentSession().delete(loadedOrder);
     }
+
+    public OrderEntity findOrderEntityById(Long id) {
+        return sessionFactory.getCurrentSession().get(OrderEntity.class, id);
+    }
 }

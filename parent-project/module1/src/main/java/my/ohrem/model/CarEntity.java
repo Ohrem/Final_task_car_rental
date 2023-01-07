@@ -26,6 +26,9 @@ public class CarEntity implements BaseEntity<Long> {
     private String color;
     private Double price;
 
+    //TODO check LIQUIBASE!!
+    private Boolean isAvailable;
+
     @OneToOne(mappedBy = "carEntity", fetch = FetchType.EAGER)
     @JoinColumn(name = "order_id")
     private OrderEntity orderEntity;

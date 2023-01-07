@@ -24,6 +24,9 @@ public class PaymentEntity implements BaseEntity<Long> {
     private LocalDate paymentDate;
     private Double paymentSum;
 
+    //TODO LIQUIBASE
+    private Boolean isPaid;
+
     @OneToOne(mappedBy = "paymentEntity")
     @JoinColumn(name = "order_id")
     private OrderEntity orderEntity;

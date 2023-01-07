@@ -48,9 +48,10 @@
             `password` VARCHAR (64) NOT NULL,
             `phone` VARCHAR(64) NOT NULL,
             `balance` DECIMAL,
-            `role` VARCHAR(64) NOT NULL
-            );
-        </sql>
+            `role` VARCHAR(64) NOT NULL,
+            `order_id` REFERENCES orders(id)
+                );
+</sql>
     </changeSet>
     <changeSet id="5" author="ohrem25032002@gmail.com">
         <sql>
