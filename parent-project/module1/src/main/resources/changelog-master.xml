@@ -29,15 +29,15 @@
     </changeSet>
     <changeSet id="3" author="ohrem25032002@gmail.com">
         <sql>
-            CREATE TABLE IF NOT EXISTS `user` (
+            CREATE TABLE IF NOT EXISTS `app_user` (
                 `id` BIGINT(19) PRIMARY KEY,
                 `name` VARCHAR(64) NOT NULL,
                 `surname` VARCHAR(64) NOT NULL,
                 `email` VARCHAR(64) UNIQUE NOT NULL,
                 `password` VARCHAR (64) NOT NULL,
                 `phone` VARCHAR(64) NOT NULL,
-                `balance` DECIMAL,
-                `role` VARCHAR(64) NOT NULL
+                `role` VARCHAR(64) NOT NULL,
+                `balance` DECIMAL
                 );
         </sql>
     </changeSet>
@@ -60,7 +60,7 @@
                  ON DELETE CASCADE
                  ON UPDATE CASCADE,
             CONSTRAINT `f_user_id` FOREIGN KEY (`user_id`)
-                REFERENCES `user` (`id`)
+                REFERENCES `app_user` (`id`)
                  ON DELETE CASCADE
                  ON UPDATE CASCADE
             );
@@ -75,10 +75,39 @@
                 `user_photo` MEDIUMBLOB               NOT NULL,
                 CONSTRAINT `user_photo`
                 FOREIGN KEY (`user_id`)
-                REFERENCES `user` (`id`)
+                REFERENCES `app_user` (`id`)
                 ON DELETE CASCADE
                 ON UPDATE CASCADE
                 );
+        </sql>
+    </changeSet>
+    <changeSet id="5" author="ohrem25032002@gmail.com">
+        <sql>
+            CREATE TABLE IF NOT EXISTS `user_photo`
+            (
+                `ID`         VARCHAR(256) PRIMARY KEY NOT NULL,
+                `user_id`    BIGINT(19)               NOT NULL,
+                `user_photo` MEDIUMBLOB               NOT NULL,
+                CONSTRAINT `user_photo`
+                FOREIGN KEY (`user_id`)
+                REFERENCES `app_user` (`id`)
+                ON DELETE CASCADE
+                ON UPDATE CASCADE
+                );
+        </sql>
+    </changeSet>
+    <changeSet id="6" author="ohrem25032002@gmail.com">
+        <sql>
+            INSERT INTO app_user VALUES (
+              '1',
+              'Roman',
+              'Ohremchuk',
+              'ohrem25032002@gmail.com',
+              '{noop}root',
+              '+375447714261',
+              'ADMIN',
+              '160.12'
+         );
         </sql>
     </changeSet>
 </databaseChangeLog>

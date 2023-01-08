@@ -40,7 +40,8 @@ public class UserEntityDaoImplTest extends BaseDaoTest {
         public void create() {
             //Given
             Connection conn = testMysqlJdbcDataSource.getConnection();
-            ResultSet rs = conn.createStatement().executeQuery("select count(*) from user;");
+            conn.createStatement().executeUpdate("delete from app_user where id='1'");
+            ResultSet rs = conn.createStatement().executeQuery("select count(*) from app_user;");
             rs.next();
             int initialSize = rs.getInt(1);
             assertEquals(0, initialSize);
@@ -48,10 +49,10 @@ public class UserEntityDaoImplTest extends BaseDaoTest {
             UserEntity user = UserEntity.builder()
                     .name("Alex")
                     .surname("Ohremchuk")
-                    .email("ohrem25032002@gmail.com")
+                    .email("test@gmail.com")
                     .password("1111")
-                    .phone("+375447714261")
-                    .role(UserRole.ADMIN)
+                    .phone("+37533432324")
+                    .role(UserRole.USER)
                     .balance(103.12d)
                     .build();
 
@@ -59,12 +60,12 @@ public class UserEntityDaoImplTest extends BaseDaoTest {
             targetObject.create(user);
 
             //Then
-            rs = conn.createStatement().executeQuery("select count(*) from user;");
+            rs = conn.createStatement().executeQuery("select count(*) from app_user;");
             rs.next();
             int actualSize = rs.getInt(1);
             assertEquals(1, actualSize);
             conn.createStatement().executeUpdate("SET FOREIGN_KEY_CHECKS = 0;");
-            conn.createStatement().executeUpdate("truncate table user;");
+            conn.createStatement().executeUpdate("delete from app_user where email='test@gmail.com'");
             conn.createStatement().executeUpdate("SET FOREIGN_KEY_CHECKS = 1;");
             conn.close();
         }
@@ -101,7 +102,7 @@ public class UserEntityDaoImplTest extends BaseDaoTest {
                     .build(UserEntityDaoImplTest.class.getResourceAsStream("UserDaoImplTest.xml"));
             DatabaseOperation.CLEAN_INSERT.execute(iDatabaseConnection, dataSet);
 
-            ResultSet rs = conn.createStatement().executeQuery("select count(*) from user;");
+            ResultSet rs = conn.createStatement().executeQuery("select count(*) from app_user;");
             rs.next();
             int initialSize = rs.getInt(1);
             assertEquals(3, initialSize);
@@ -132,12 +133,12 @@ public class UserEntityDaoImplTest extends BaseDaoTest {
             assertEquals(UserRole.USER, updatedUser.getRole());
 
             //Then
-            rs = conn.createStatement().executeQuery("select count(*) from user;");
+            rs = conn.createStatement().executeQuery("select count(*) from app_user;");
             rs.next();
             int actualSize = rs.getInt(1);
             assertEquals(3, actualSize);
             conn.createStatement().executeUpdate("SET FOREIGN_KEY_CHECKS = 0;");
-            conn.createStatement().executeUpdate("truncate table user;");
+            conn.createStatement().executeUpdate("truncate table app_user;");
             conn.createStatement().executeUpdate("SET FOREIGN_KEY_CHECKS = 1;");
             conn.close();
 
@@ -159,13 +160,13 @@ public class UserEntityDaoImplTest extends BaseDaoTest {
             targetObject.delete(user);
             //Then
             Connection conn = testMysqlJdbcDataSource.getConnection();
-            ResultSet rs = conn.createStatement().executeQuery("select count(*) from user;");
+            ResultSet rs = conn.createStatement().executeQuery("select count(*) from app_user;");
             rs.next();
             int actualSize = rs.getInt(1);
             assertEquals(2, actualSize);
 
             conn.createStatement().executeUpdate("SET FOREIGN_KEY_CHECKS = 0;");
-            conn.createStatement().executeUpdate("truncate table user;");
+            conn.createStatement().executeUpdate("truncate table app_user;");
             conn.createStatement().executeUpdate("SET FOREIGN_KEY_CHECKS = 1;");
             conn.close();
 

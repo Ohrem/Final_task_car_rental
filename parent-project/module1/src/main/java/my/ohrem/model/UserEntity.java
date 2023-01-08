@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Builder
-@Table(name = "user")
+@Table(name = "app_user")
 public class UserEntity implements BaseEntity<Long> {
     @Id
     @GeneratedValue(generator = "increment")
