@@ -6,6 +6,7 @@
         <exploded>true</exploded>
         <module>module2</module>
         <packaging>war</packaging>
+        <unpackNestedArchives>false</unpackNestedArchives>
       </options>
     </properties>
     <root id="root">
@@ -26,49 +27,6 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.3.23" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context:5.3.23" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:5.3.23" />
-          <element id="archive" name="module1-1.0-SNAPSHOT.jar">
-            <element id="module-output" name="module1" />
-          </element>
-          <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:5.6.12.Final" />
-          <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging:3.4.3.Final" />
-          <element id="library" level="project" name="Maven: javax.persistence:javax.persistence-api:2.2" />
-          <element id="library" level="project" name="Maven: antlr:antlr:2.7.7" />
-          <element id="library" level="project" name="Maven: org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.1.1.Final" />
-          <element id="library" level="project" name="Maven: org.jboss:jandex:2.4.2.Final" />
-          <element id="library" level="project" name="Maven: com.fasterxml:classmate:1.5.1" />
-          <element id="library" level="project" name="Maven: javax.activation:javax.activation-api:1.2.0" />
-          <element id="library" level="project" name="Maven: org.hibernate.common:hibernate-commons-annotations:5.1.2.Final" />
-          <element id="library" level="project" name="Maven: javax.xml.bind:jaxb-api:2.3.1" />
-          <element id="library" level="project" name="Maven: org.glassfish.jaxb:jaxb-runtime:2.3.1" />
-          <element id="library" level="project" name="Maven: org.glassfish.jaxb:txw2:2.3.1" />
-          <element id="library" level="project" name="Maven: com.sun.istack:istack-commons-runtime:3.0.7" />
-          <element id="library" level="project" name="Maven: org.jvnet.staxex:stax-ex:1.8" />
-          <element id="library" level="project" name="Maven: com.sun.xml.fastinfoset:FastInfoset:1.2.15" />
-          <element id="library" level="project" name="Maven: org.hibernate:hibernate-c3p0:5.6.12.Final" />
-          <element id="library" level="project" name="Maven: com.mchange:c3p0:0.9.5.5" />
-          <element id="library" level="project" name="Maven: com.mchange:mchange-commons-java:0.2.19" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-orm:5.3.23" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:5.3.23" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-tx:5.3.23" />
-          <element id="library" level="project" name="Maven: org.apache.commons:commons-dbcp2:2.9.0" />
-          <element id="library" level="project" name="Maven: org.apache.commons:commons-pool2:2.10.0" />
-          <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.2" />
-          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.22" />
-          <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.11.4" />
-          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.36" />
-          <element id="library" level="project" name="Maven: org.slf4j:slf4j-simple:1.7.36" />
-          <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.24" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:5.7.5" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:5.7.5" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-crypto:5.7.5" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:5.7.5" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-taglibs:5.7.5" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-acl:5.7.5" />
-          <element id="library" level="project" name="Maven: org.modelmapper:modelmapper:3.0.0" />
-          <element id="archive" name="module3-1.0-SNAPSHOT.jar">
-            <element id="module-output" name="module3" />
-          </element>
-          <element id="library" level="project" name="Maven: net.bytebuddy:byte-buddy:1.12.14" />
         </element>
       </element>
       <element id="directory" name="META-INF">

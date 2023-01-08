@@ -40,8 +40,7 @@ public class CreateOrderService {
 
     public void createOrderForUser(OrderEntity orderEntity) {
         UserEntity user = getUserFromSecurityContextHolder();
-
-        orderEntity.setUserEntities(user);
+        orderEntity.setUserEntity(user);
         user.setOrderEntity(orderEntity);
 
         orderEntityDao.create(orderEntity);

@@ -31,12 +31,16 @@ public class UserEntity implements BaseEntity<Long> {
     private String phone;
     @Enumerated(value = EnumType.STRING)
     private UserRole role;
-    private Double balance; //TODO CHANGED FROM BIGDECIMAL TO DOUBLE
+    private Double balance;
 
-    //TODO OneToOne!
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private UserPhoto userPhoto;
+
+    @OneToOne(mappedBy = "userEntity", cascade = CascadeType.ALL)
+    private OrderEntity orderEntity;
+
     /*@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "userEntities", fetch = FetchType.EAGER)
     private List<OrderEntity> orderList;*/
 
-    @OneToOne //TODO !!!!!!
-    private OrderEntity orderEntity;
+
 }

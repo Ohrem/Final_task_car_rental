@@ -28,17 +28,19 @@ public class OrderEntity implements BaseEntity<Long> {
     @Column(name = "end_date")
     private LocalDate endDate;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    private String message;
+
+    @OneToOne
     @JoinColumn(name = "car_id")
     private CarEntity carEntity;
 
-    @OneToOne(fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity userEntity;
+
+    @OneToOne
     @JoinColumn(name = "payment_id")
     private PaymentEntity paymentEntity;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private UserEntity userEntities;
 
-    private String message;
 }

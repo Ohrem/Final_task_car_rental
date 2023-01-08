@@ -23,8 +23,6 @@ public class PaymentEntity implements BaseEntity<Long> {
     private Long id;
     private LocalDate paymentDate;
     private Double paymentSum;
-
-    //TODO LIQUIBASE
     private Boolean isPaid;
 
     @OneToOne(mappedBy = "paymentEntity")

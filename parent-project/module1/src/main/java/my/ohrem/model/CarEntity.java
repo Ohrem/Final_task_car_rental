@@ -20,13 +20,10 @@ public class CarEntity implements BaseEntity<Long> {
             strategy = "org.hibernate.id.IncrementGenerator"
     )
     private Long id;
-
     private String brand;
     private String model;
     private String color;
     private Double price;
-
-    //TODO check LIQUIBASE!!
     private Boolean isAvailable;
 
     @OneToOne(mappedBy = "carEntity", fetch = FetchType.EAGER)
