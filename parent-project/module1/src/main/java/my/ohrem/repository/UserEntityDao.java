@@ -15,4 +15,6 @@ public interface UserEntityDao {
     void delete(UserEntity user);
 
     List<UserEntity> findAll();
+
+    List<UserEntity> findUserByEmail(String username);
 }

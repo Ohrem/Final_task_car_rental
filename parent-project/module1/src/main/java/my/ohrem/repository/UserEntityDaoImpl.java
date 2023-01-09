@@ -41,6 +41,7 @@ public class UserEntityDaoImpl implements UserEntityDao {
         return sessionFactory.getCurrentSession().createQuery("from UserEntity ", UserEntity.class).list();
     }
 
+    @Override
     public List<UserEntity> findUserByEmail(String email) {
         return sessionFactory.getCurrentSession()
                 .createQuery("from UserEntity au where au.email=:email", UserEntity.class)

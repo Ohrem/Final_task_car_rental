@@ -4,10 +4,7 @@ import my.ohrem.model.CarEntity;
 import my.ohrem.model.OrderEntity;
 import my.ohrem.model.PaymentEntity;
 import my.ohrem.model.UserEntity;
-import my.ohrem.repository.CarEntityDaoImpl;
-import my.ohrem.repository.OrderEntityDaoImpl;
-import my.ohrem.repository.PaymentEntityDaoImpl;
-import my.ohrem.repository.UserEntityDaoImpl;
+import my.ohrem.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,16 +17,16 @@ import java.time.temporal.ChronoUnit;
 public class CreateOrderService {
 
     @Autowired
-    private OrderEntityDaoImpl orderEntityDao;
+    private OrderEntityDao orderEntityDao;
 
     @Autowired
-    private CarEntityDaoImpl carEntityDao;
+    private CarEntityDao carEntityDao;
 
     @Autowired
-    private UserEntityDaoImpl userEntityDao;
+    private UserEntityDao userEntityDao;
 
     @Autowired
-    private PaymentEntityDaoImpl paymentEntityDao;
+    private PaymentEntityDao paymentEntityDao;
 
     private UserEntity getUserFromSecurityContextHolder() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
