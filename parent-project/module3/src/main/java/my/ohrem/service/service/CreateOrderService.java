@@ -32,7 +32,7 @@ public class CreateOrderService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentEmail = authentication.getName();
 
-        return userEntityDao.findUserByEmail(currentEmail).get(0);
+        return userEntityDao.findSingleUserByEmail(currentEmail);
     }
 
     public void createOrderForUser(OrderEntity orderEntity) {

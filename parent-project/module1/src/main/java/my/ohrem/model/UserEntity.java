@@ -1,9 +1,6 @@
 package my.ohrem.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -15,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Builder
+@ToString
 @Table(name = "app_user")
 public class UserEntity implements BaseEntity<Long> {
     @Id

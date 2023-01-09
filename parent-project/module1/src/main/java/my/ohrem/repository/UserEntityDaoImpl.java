@@ -48,4 +48,12 @@ public class UserEntityDaoImpl implements UserEntityDao {
                 .setParameter("email", email)
                 .list();
     }
+
+    @Override
+    public UserEntity findSingleUserByEmail(String email) {
+        return sessionFactory.getCurrentSession()
+                .createQuery("from UserEntity user where user.email=:email", UserEntity.class)
+                .setParameter("email", email)
+                .uniqueResult();
+    }
 }

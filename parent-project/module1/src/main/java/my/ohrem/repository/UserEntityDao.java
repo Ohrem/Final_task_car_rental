@@ -17,4 +17,6 @@ public interface UserEntityDao {
     List<UserEntity> findAll();
 
     List<UserEntity> findUserByEmail(String username);
+
+    UserEntity findSingleUserByEmail(String username);
 }

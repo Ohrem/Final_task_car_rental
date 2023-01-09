@@ -2,6 +2,7 @@ package my.ohrem.web;
 
 import my.ohrem.service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,7 @@ public class UserController {
     }
 
     @GetMapping("/getAllUsers.html")
+    @Secured("ADMIN")
     public ModelAndView getAllUsers() {
         return new ModelAndView("getAllUsers",
                 Map.of("users", userService.getAll()));
