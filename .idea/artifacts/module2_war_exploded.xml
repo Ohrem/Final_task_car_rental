@@ -6,6 +6,7 @@
         <exploded>true</exploded>
         <module>module2</module>
         <packaging>war</packaging>
+        <unpackNestedArchives>false</unpackNestedArchives>
       </options>
     </properties>
     <root id="root">
@@ -26,6 +27,13 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.3.23" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context:5.3.23" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:5.3.23" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:5.7.5" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:5.7.5" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-crypto:5.7.5" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:5.7.5" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-taglibs:5.7.5" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-acl:5.7.5" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:5.3.23" />
           <element id="archive" name="module1-1.0-SNAPSHOT.jar">
             <element id="module-output" name="module1" />
           </element>
@@ -48,7 +56,6 @@
           <element id="library" level="project" name="Maven: com.mchange:c3p0:0.9.5.5" />
           <element id="library" level="project" name="Maven: com.mchange:mchange-commons-java:0.2.19" />
           <element id="library" level="project" name="Maven: org.springframework:spring-orm:5.3.23" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:5.3.23" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:5.3.23" />
           <element id="library" level="project" name="Maven: org.apache.commons:commons-dbcp2:2.9.0" />
           <element id="library" level="project" name="Maven: org.apache.commons:commons-pool2:2.10.0" />
@@ -58,13 +65,6 @@
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.36" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-simple:1.7.36" />
           <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.24" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:5.7.5" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:5.7.5" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-crypto:5.7.5" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:5.7.5" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-taglibs:5.7.5" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-acl:5.7.5" />
-          <element id="library" level="project" name="Maven: org.modelmapper:modelmapper:3.0.0" />
           <element id="archive" name="module3-1.0-SNAPSHOT.jar">
             <element id="module-output" name="module3" />
           </element>

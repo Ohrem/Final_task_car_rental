@@ -1,5 +1,4 @@
 package my.ohrem.repository;
-
 import my.ohrem.config.MysqlJdbcDataSource;
 import my.ohrem.model.CarEntity;
 import org.hibernate.Session;
