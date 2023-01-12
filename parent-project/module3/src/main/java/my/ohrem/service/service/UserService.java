@@ -29,4 +29,9 @@ public class UserService {
         return userEntityDao.findById(userId);
     }
 
+    @Transactional
+    public void update(UserEntity user) {
+        userEntityDao.update(user);
+    }
+
 }

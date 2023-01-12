@@ -34,7 +34,7 @@ public class UserEntity implements BaseEntity<Long> {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private UserPhoto userPhoto;
 
-    @OneToOne(mappedBy = "userEntity", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "userEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private OrderEntity orderEntity;
 
     /*@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "userEntities", fetch = FetchType.EAGER)

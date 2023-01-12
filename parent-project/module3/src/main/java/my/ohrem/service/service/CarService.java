@@ -26,4 +26,8 @@ public class CarService {
                 .filter(car -> car.getIsAvailable().equals(true))
                 .collect(Collectors.toList());
     }
+
+    public CarEntity getCarEntity(Long carId) {
+        return carEntityDao.findById(carId);
+    }
 }

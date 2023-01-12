@@ -1,4 +1,5 @@
 package my.ohrem.model;
+
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -7,7 +8,7 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-@ToString(exclude = {"userEntities"})
+@ToString(exclude = {"userEntity", "carEntity", "paymentEntity"})
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -15,11 +16,8 @@ import java.time.LocalDate;
 public class OrderEntity implements BaseEntity<Long> {
 
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(
-            name = "increment",
-            strategy = "org.hibernate.id.IncrementGenerator"
-    )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_seq")
+    @SequenceGenerator(name = "order_seq", sequenceName = "t_order_seq")
     private Long id;
 
     @Column(name = "begin_date")

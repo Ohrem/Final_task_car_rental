@@ -4,10 +4,11 @@ import my.ohrem.model.CarEntity;
 import my.ohrem.model.OrderEntity;
 import my.ohrem.model.PaymentEntity;
 import my.ohrem.model.UserEntity;
-import my.ohrem.repository.*;
+import my.ohrem.repository.CarEntityDao;
+import my.ohrem.repository.OrderEntityDao;
+import my.ohrem.repository.PaymentEntityDao;
+import my.ohrem.repository.UserEntityDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -28,24 +29,22 @@ public class CreateOrderService {
     @Autowired
     private PaymentEntityDao paymentEntityDao;
 
-    private UserEntity getUserFromSecurityContextHolder() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String currentEmail = authentication.getName();
+    public String createOrderForUser(OrderEntity orderEntity, UserEntity user) {
+        System.out.println(user);
 
-        return userEntityDao.findSingleUserByEmail(currentEmail);
-    }
+        if(user.getOrderEntity() != null){
+            return "index";
+        }
 
-    public void createOrderForUser(OrderEntity orderEntity) {
-        UserEntity user = getUserFromSecurityContextHolder();
         orderEntity.setUserEntity(user);
         user.setOrderEntity(orderEntity);
 
         orderEntityDao.create(orderEntity);
+
+        return "createPaymentEntity";
     }
 
-    public void addCarToOrder(Long id) {
-        UserEntity user = getUserFromSecurityContextHolder();
-
+    public void addCarToOrder(Long id, UserEntity user) {
         OrderEntity orderEntity = user.getOrderEntity();
 
         CarEntity carEntity = carEntityDao.findById(id);
@@ -58,9 +57,7 @@ public class CreateOrderService {
         orderEntityDao.update(orderEntity);
     }
 
-    public void createPaymentAndAddToOrder(LocalDate paymentDate) {
-        UserEntity user = getUserFromSecurityContextHolder();
-
+    public void createPaymentAndAddToOrder(LocalDate paymentDate, UserEntity user) {
         OrderEntity orderEntity = user.getOrderEntity();
         CarEntity carEntity = orderEntity.getCarEntity();
 
@@ -81,9 +78,7 @@ public class CreateOrderService {
         orderEntityDao.update(orderEntity);
     }
 
-    public void performPaymentForOrder() {
-        UserEntity user = getUserFromSecurityContextHolder();
-
+    public void performPaymentForOrder(UserEntity user) {
         OrderEntity orderEntity = user.getOrderEntity();
         PaymentEntity paymentEntity = orderEntity.getPaymentEntity();
 
