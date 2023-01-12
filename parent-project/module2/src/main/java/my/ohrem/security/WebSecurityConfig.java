@@ -37,5 +37,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                         @Qualifier("authService") AuthenticationService service) throws Exception {
         auth.userDetailsService(service);
     }
-
 }

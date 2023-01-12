@@ -45,9 +45,9 @@
         <sql>
             CREATE TABLE IF NOT EXISTS `orders` (
             `id` BIGINT(19) PRIMARY KEY,
-            `car_id` BIGINT(19) NOT NULL,
-            `payment_id` BIGINT(19) NOT NULL,
-            `user_id` BIGINT(19) NOT NULL,
+            `car_id` BIGINT(19),
+            `payment_id` BIGINT(19),
+            `user_id` BIGINT(19),
             `begin_date` DATE,
             `end_date` DATE,
             `message` VARCHAR(64) NOT NULL,
@@ -66,37 +66,45 @@
             );
         </sql>
     </changeSet>
-    <changeSet id="5" author="ohrem25032002@gmail.com">
+    <changeSet id="5" author="a.veramkovich@gmail.com">
         <sql>
-            CREATE TABLE IF NOT EXISTS `user_photo`
-            (
-                `ID`         VARCHAR(256) PRIMARY KEY NOT NULL,
-                `user_id`    BIGINT(19)               NOT NULL,
-                `user_photo` MEDIUMBLOB               NOT NULL,
-                CONSTRAINT `user_photo`
-                FOREIGN KEY (`user_id`)
-                REFERENCES `app_user` (`id`)
-                ON DELETE CASCADE
-                ON UPDATE CASCADE
-                );
-        </sql>
-    </changeSet>
-    <changeSet id="5" author="ohrem25032002@gmail.com">
-        <sql>
-            CREATE TABLE IF NOT EXISTS `user_photo`
-            (
-                `ID`         VARCHAR(256) PRIMARY KEY NOT NULL,
-                `user_id`    BIGINT(19)               NOT NULL,
-                `user_photo` MEDIUMBLOB               NOT NULL,
-                CONSTRAINT `user_photo`
-                FOREIGN KEY (`user_id`)
-                REFERENCES `app_user` (`id`)
-                ON DELETE CASCADE
-                ON UPDATE CASCADE
-                );
+            CREATE TABLE IF NOT EXISTS t_order_seq (
+                next_val INT UNSIGNED PRIMARY KEY NOT NULL
+            );
+            INSERT INTO t_order_seq VALUES (0);
         </sql>
     </changeSet>
     <changeSet id="6" author="ohrem25032002@gmail.com">
+        <sql>
+            CREATE TABLE IF NOT EXISTS `user_photo`
+            (
+                `ID`         VARCHAR(256) PRIMARY KEY NOT NULL,
+                `user_id`    BIGINT(19)               NOT NULL,
+                `user_photo` MEDIUMBLOB               NOT NULL,
+                CONSTRAINT `user_photo`
+                FOREIGN KEY (`user_id`)
+                REFERENCES `app_user` (`id`)
+                ON DELETE CASCADE
+                ON UPDATE CASCADE
+                );
+        </sql>
+    </changeSet>
+    <changeSet id="7" author="ohrem25032002@gmail.com">
+        <sql>
+            CREATE TABLE IF NOT EXISTS `user_photo`
+            (
+                `ID`         VARCHAR(256) PRIMARY KEY NOT NULL,
+                `user_id`    BIGINT(19)               NOT NULL,
+                `user_photo` MEDIUMBLOB               NOT NULL,
+                CONSTRAINT `user_photo`
+                FOREIGN KEY (`user_id`)
+                REFERENCES `app_user` (`id`)
+                ON DELETE CASCADE
+                ON UPDATE CASCADE
+                );
+        </sql>
+    </changeSet>
+    <changeSet id="8" author="ohrem25032002@gmail.com">
         <sql>
             INSERT INTO app_user VALUES (
               '1',
