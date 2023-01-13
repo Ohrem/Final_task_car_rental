@@ -50,7 +50,6 @@ public class CreateOrderController {
 //    @Secured("ADMIN")
     public ModelAndView createOrderForUser(CreateOrderForUserRequest request) throws ParseException {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
         OrderEntity orderEntity = OrderEntity.builder()
                 .beginDate(LocalDate.parse(request.getBeginDate(), formatter))
                 .endDate(LocalDate.parse(request.getEndDate(), formatter))
