@@ -1,4 +1,5 @@
 <!doctype html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -28,6 +29,34 @@
             <a href="/hello/createOrder.html" class="btn btn-primary">Go rent a car</a>
         </div>
     </div>
+
+    <table style="width:100%" class="table">
+        <tr>
+            <th>Name</th>
+        </tr>
+        <c:forEach items="${cars}" var="car">
+            <tr>
+                <td><c:out value="${car.brand}"/></td>
+                <td><c:out value="${car.model}"/></td>
+                <td><c:out value="${car.color}"/></td>
+                <td><c:out value="${car.price}"/></td>
+            </tr>
+        </c:forEach>
+    </table>
+
+    <select name="select">
+        <option value="-1">Select a car</option>
+        <c:forEach items="${allCars}" var="car">
+            <option value="${car.id}">${car.brand}, ${car.model}, ${car.color}, ${car.price}</option>
+        </c:forEach>
+    </select>
+
+    <select name="select2"> <!--Supplement an id here instead of using 'name'-->
+        <option value="value1">Значение 1</option>
+        <option value="value2" selected>Значение 2</option>
+        <option value="value3">Значение 3</option>
+    </select>
+
     <footer>
         <jsp:include page="_footer.jsp"/>
     </footer>

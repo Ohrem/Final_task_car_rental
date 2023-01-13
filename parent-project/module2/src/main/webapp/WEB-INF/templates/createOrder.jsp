@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>CreateOrder</title>
@@ -35,10 +37,15 @@
                                 <input id="user-message" type="text" name="message" class="validate">
                                 <label for="user-message">Message</label>
                             </div>
+
                             <div class="row">
-                                <div class="input-field col s6">
-                                    <input id="car_id" type="number" name="carId" class="validate">
-                                    <label for="car_id">Car id</label>
+                                <div class="form-select form-select-lg mb-3">
+                                    <select name="carId">
+                                        <option value="-1">Select a car</option>
+                                        <c:forEach items="${allCars}" var="car">
+                                            <option value="${car.id}">${car.brand}, ${car.model}, ${car.color}, ${car.price}</option>
+                                        </c:forEach>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -46,6 +53,7 @@
                     <div class="d-flex mt-4 justify-content-between">
                         <button class="write btn" type="submit">Next</button>
                     </div>
+
                 </form>
             </div>
         </div>

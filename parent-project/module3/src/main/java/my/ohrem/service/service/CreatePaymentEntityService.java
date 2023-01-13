@@ -33,7 +33,7 @@ public class CreatePaymentEntityService {
         orderEntityDao.update(orderEntity);
     }
 
-    private double countFinalSum(OrderEntity orderEntity) {
+    public double countFinalSum(OrderEntity orderEntity) {
         Double price = orderEntity.getCarEntity().getPrice();
         long between = DAYS.between(orderEntity.getBeginDate(), orderEntity.getEndDate());
 

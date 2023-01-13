@@ -42,31 +42,48 @@ public class CreateOrderController {
 
     @GetMapping("/createOrder.html")
 //    @Secured("ADMIN")
-    public String getCreateOrder() {
-        return "createOrder";
+    public ModelAndView getCreateOrder() {
+        ModelAndView modelAndView = new ModelAndView("createOrder");
+        modelAndView.addObject("allCars", carService.getAll());
+
+        return modelAndView;
+    }
+
+    @GetMapping("/processPayment.html")
+    public ModelAndView getProcessPayment() {
+        UserEntity user = userGetFromContextHolderService.getUserFromSecurityContextHolder();
+
+        ModelAndView modelAndView = new ModelAndView("paymentProcessing");
+
+        modelAndView.addObject("paymentSum", user.getOrderEntity().getPaymentEntity().getPaymentSum());
+        modelAndView.addObject("userBalance", user.getBalance());
+
+        return modelAndView;
     }
 
     @PostMapping("/createOrder.html")
 //    @Secured("ADMIN")
     public ModelAndView createOrderForUser(CreateOrderForUserRequest request) throws ParseException {
+        UserEntity user = userGetFromContextHolderService.getUserFromSecurityContextHolder();
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
         OrderEntity orderEntity = OrderEntity.builder()
                 .beginDate(LocalDate.parse(request.getBeginDate(), formatter))
                 .endDate(LocalDate.parse(request.getEndDate(), formatter))
                 .message(request.getMessage())
-                .carEntity(carService.getCarEntity(request.getCarId()))
                 .build();
 
         System.out.println("ORDERENTITY: " + orderEntity);
 
-        createOrderService.createOrderForUser(orderEntity, userGetFromContextHolderService.getUserFromSecurityContextHolder());
-        return new ModelAndView("createPaymentEntity");
+        createOrderService.addCarToOrder(request.getCarId(), user, orderEntity);
 
-        //TODO create redirect from createOrderForUser!!!!!!!!
+        String redirect = createOrderService.createOrderForUser(orderEntity, user);
+        return new ModelAndView(redirect);
     }
 
     @PostMapping("/paymentEntity.html")
-    public ModelAndView createPaymentEntity(CreatePaymentEntityRequest request) {
+    public String createPaymentEntity(CreatePaymentEntityRequest request) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         PaymentEntity paymentEntity = PaymentEntity.builder()
@@ -75,7 +92,7 @@ public class CreateOrderController {
 
         createPaymentEntityService.createPaymentEntity(paymentEntity, userGetFromContextHolderService.getUserFromSecurityContextHolder());
 
-        return new ModelAndView("paymentProcessing"); //TODO add redirect
+        return "redirect:/processPayment.html"; //TODO add redirect
     }
 
     @PostMapping("/processPayment.html")
@@ -97,11 +114,12 @@ public class CreateOrderController {
 
         if(paymentEntity.getPaymentSum() == 0) {
             paymentEntity.setIsPaid(true);
+            //TODO redirect to successful payment page
         }
 
         userService.update(user);
         paymentService.update(paymentEntity);
 
-        return new ModelAndView("asdasda"); //TODO add redirect
+        return new ModelAndView("index"); //TODO add redirect
     }
 }

@@ -18,6 +18,8 @@
                 <p>Please fill in the payment sum</p>
             </div>
         </div>
+        Payment sum is: ${paymentSum}
+        User balance is: ${userBalance}
         <div class="container mt-5">
             <div class="row">
                 <form class="col s12" method="post" action="/hello/processPayment.html">

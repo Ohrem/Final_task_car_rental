@@ -33,7 +33,7 @@ public class CreateOrderService {
         System.out.println(user);
 
         if(user.getOrderEntity() != null){
-            return "index";
+            return "index"; //TODO redirect to order delete page
         }
 
         orderEntity.setUserEntity(user);
@@ -44,10 +44,9 @@ public class CreateOrderService {
         return "createPaymentEntity";
     }
 
-    public void addCarToOrder(Long id, UserEntity user) {
-        OrderEntity orderEntity = user.getOrderEntity();
-
+    public void addCarToOrder(Long id, UserEntity user, OrderEntity orderEntity) {
         CarEntity carEntity = carEntityDao.findById(id);
+
         carEntity.setIsAvailable(false);
 
         orderEntity.setCarEntity(carEntity);
@@ -55,41 +54,5 @@ public class CreateOrderService {
 
         carEntityDao.update(carEntity);
         orderEntityDao.update(orderEntity);
-    }
-
-    public void createPaymentAndAddToOrder(LocalDate paymentDate, UserEntity user) {
-        OrderEntity orderEntity = user.getOrderEntity();
-        CarEntity carEntity = orderEntity.getCarEntity();
-
-        long between = ChronoUnit.DAYS.between(orderEntity.getBeginDate(), orderEntity.getEndDate());
-        Double paymentSum = carEntity.getPrice() * between;
-
-        PaymentEntity paymentEntity = PaymentEntity.builder()
-                .orderEntity(orderEntity)
-                .paymentDate(paymentDate)
-                .paymentSum(paymentSum)
-                .isPaid(false)
-                .build();
-
-        orderEntity.setPaymentEntity(paymentEntity);
-        paymentEntity.setOrderEntity(orderEntity);
-
-        paymentEntityDao.create(paymentEntity);
-        orderEntityDao.update(orderEntity);
-    }
-
-    public void performPaymentForOrder(UserEntity user) {
-        OrderEntity orderEntity = user.getOrderEntity();
-        PaymentEntity paymentEntity = orderEntity.getPaymentEntity();
-
-        Double paymentSum = paymentEntity.getPaymentSum();
-
-        if (user.getBalance() >= paymentSum) {
-            user.setBalance(user.getBalance() - paymentSum);
-            paymentEntity.setIsPaid(true);
-
-            paymentEntityDao.update(paymentEntity);
-            userEntityDao.update(user);
-        } else return; //TODO add exception
     }
 }
