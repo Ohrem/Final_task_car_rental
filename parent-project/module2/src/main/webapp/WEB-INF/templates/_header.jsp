@@ -5,14 +5,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Web shop demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 
 <body>
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Car Rental</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <img src="${pageContext.request.contextPath}/resources/imgs/330-3304412_png-transparent-car-car-rental-logo-png.png"
+             alt="" width="120" height="50"/>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -21,23 +24,24 @@
                     <a class="nav-link active" aria-current="page" href="/hello/index.html">Home</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Products
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Cars
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/hello/product-list.html">Show products</a></li>
-                        <li><a class="dropdown-item" href="/hello/add-product.html">Add a product</a></li>
+                        <li><a class="dropdown-item" href="/hello/car-list.html">Show cars</a></li>
+                        <li><a class="dropdown-item" href="/hello/add-car.html">Add car</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
                         Select action
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/hello/add-product.html">Add a product</a></li>
-                        <li><a class="dropdown-item" href="/hello/add-department.html">Add department</a></li>
-                        <li><a class="dropdown-item" href="/hello/add-employee.html">Add employee</a></li>
-                        <li><a class="dropdown-item" href="/hello/add-meeting.html">Add meeting</a></li>
+                        <li><a class="dropdown-item" href="/hello/add-product.html">Show orders</a></li>
+                        <li><a class="dropdown-item" href="/hello/add-department.html">Show cars</a></li>
+                        <li><a class="dropdown-item" href="/hello/add-employee.html">Show users</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -49,16 +53,18 @@
                     </security:authorize>
                 </li>
             </ul>
+            <img src="${pageContext.request.contextPath}/resources/imgs/user_icon_150670.png" alt="" width="25"
+                 height="25"/>
             <security:authorize access="isAuthenticated()">
-                <a class="nav-link disabled">Welcome&nbsp;<security:authentication property="name"/>&nbsp;</a>
+                <a class="nav-link disabled">Welcome&nbsp;<security:authentication property="name"/>&nbsp; </a>
             </security:authorize>
             <security:authorize access="!isAuthenticated()">
-                <a class="nav-link disabled">Welcome&nbsp;anonymous</a>
+                <a class="nav-link disabled">Welcome&nbsp;anonymous </a>
             </security:authorize>
-            <form class="d-flex" role="search" action="/hello/search.do" method="post">
-                <input class="form-control me-2" type="search" name="pname" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            <%--            <form class="d-flex" role="search" action="/hello/search.do" method="post">--%>
+            <%--                <input class="form-control me-2" type="search" name="pname" placeholder="Search" aria-label="Search">--%>
+            <%--                <button class="btn btn-outline-success" type="submit">Search</button>--%>
+            <%--            </form>--%>
         </div>
     </div>
 </nav>

@@ -32,7 +32,7 @@
                         </div>
                     </div>
                     <div class="d-flex mt-4 justify-content-between">
-                        <button class="write btn" type="submit">Next</button>
+                        <button class="write btn" type="submit">Submit</button>
                     </div>
                 </form>
             </div>

@@ -1,5 +1,5 @@
 <!doctype html>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -19,20 +19,34 @@
         <jsp:include page="_header.jsp"/>
     </header>
     <main class="main"><h1>Home page</h1></main>
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="https://www.talk-business.co.uk/wp-content/uploads/2017/04/car-leasing.jpg"
-             alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                card's content.</p>
-            <a href="/hello/createOrder.html" class="btn btn-primary">Go rent a car</a>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" style="width: 200px; height: 200px;" src="https://www.talk-business.co.uk/wp-content/uploads/2017/04/car-leasing.jpg"
+                 alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="/hello/createOrder.html" class="btn btn-primary">Go rent a car</a>
+            </div>
         </div>
+
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" style="width: 200px; height: 200px;"
+                     src="https://millionmilesecrets.com/wp-content/uploads/shutterstock_394789348.jpg"
+                     alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Order result info</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="/hello/userResultInfo.html" class="btn btn-primary">check Result</a>
+                </div>
+            </div>
+
     </div>
 
     <table style="width:100%" class="table">
         <tr>
-            <th>Name</th>
+            <th>Cars</th>
         </tr>
         <c:forEach items="${cars}" var="car">
             <tr>
@@ -43,20 +57,6 @@
             </tr>
         </c:forEach>
     </table>
-
-    <select name="select">
-        <option value="-1">Select a car</option>
-        <c:forEach items="${allCars}" var="car">
-            <option value="${car.id}">${car.brand}, ${car.model}, ${car.color}, ${car.price}</option>
-        </c:forEach>
-    </select>
-
-    <select name="select2"> <!--Supplement an id here instead of using 'name'-->
-        <option value="value1">Значение 1</option>
-        <option value="value2" selected>Значение 2</option>
-        <option value="value3">Значение 3</option>
-    </select>
-
     <footer>
         <jsp:include page="_footer.jsp"/>
     </footer>

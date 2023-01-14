@@ -13,3 +13,16 @@ body, html {
     flex: 1 1 auto;
 }
 
+.card{
+    margin-left: 20px;
+    display: flex;
+    flex-direction: row;
+}
+.nav-link disabled{
+    color: black;
+}
+.nav{
+    color: black;
+}
+
+
