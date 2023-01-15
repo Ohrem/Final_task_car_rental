@@ -72,7 +72,8 @@ public class DataConfig {
                 PaymentEntity.class,
                 UserEntity.class,
                 UserRole.class,
-                UserPhoto.class
+                UserPhoto.class,
+                CarPhoto.class
         );
         sessionFactory.setHibernateProperties(hibernateProperties);
         return sessionFactory;

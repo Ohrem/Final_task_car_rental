@@ -40,5 +40,4 @@ public class UserEntity implements BaseEntity<Long> {
     /*@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "userEntities", fetch = FetchType.EAGER)
     private List<OrderEntity> orderList;*/
 
-
 }

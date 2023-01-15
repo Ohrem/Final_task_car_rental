@@ -12,6 +12,8 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -33,17 +35,12 @@ public class UserController {
     @Autowired
     private CreatePaymentEntityService paymentEntityService;
 
-    @Transactional
-    public void add(User user, byte[] photo) {
-
-    }
-
-    @GetMapping("/getAllUsers.html")
-    @Secured("ADMIN")
-    public ModelAndView getAllUsers() {
-        return new ModelAndView("getAllUsers",
-                Map.of("users", userService.getAll()));
-    }
+//    @GetMapping("/getAllUsers.html")
+////    @Secured("ADMIN")
+//    public ModelAndView getAllUsers() {
+//        return new ModelAndView("getAllUsers",
+//                Map.of("users", userService.getAll()));
+//    }
 
     @GetMapping("/getAllCars.html")
     public ModelAndView getAllCars() {

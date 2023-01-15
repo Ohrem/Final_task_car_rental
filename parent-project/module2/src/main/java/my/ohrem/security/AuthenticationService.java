@@ -33,7 +33,7 @@ public class AuthenticationService implements UserDetailsService {
                     appUser.getEmail(),
                     appUser.getPassword(),
                     true, true, true, true,
-                    List.of(new SimpleGrantedAuthority(appUser.getRole().name()))
+                    List.of(new SimpleGrantedAuthority("ROLE_" + appUser.getRole().name()))
             );
 
         } catch (Exception e) {

@@ -5,17 +5,19 @@
     <title>Title</title>
 </head>
 <body>
-<table style="width:100%">
+<table style="width:100%" class="table">
     <tr>
         <th>ID</th>
         <th>Name</th>
-        <th>Price</th>
+        <th>Balance</th>
+        <th>Photo</th>
     </tr>
     <c:forEach items="${users}" var="user">
         <tr>
             <td><c:out value="${user.id}"/></td>
             <td><c:out value="${user.name}"/></td>
-            <td><c:out value="${user.password}"/></td>
+            <td><c:out value="${user.balance}"/></td>
+            <td><image src="/hello/image/${user.id}/photo.jpg" class="img-thumbnail"/></td>
         </tr>
     </c:forEach>
 </table>

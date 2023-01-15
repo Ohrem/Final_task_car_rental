@@ -1,6 +1,7 @@
 package my.ohrem.service.service;
 
 import my.ohrem.model.UserEntity;
+import my.ohrem.model.UserPhoto;
 import my.ohrem.repository.UserEntityDao;
 import my.ohrem.repository.UserEntityDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;

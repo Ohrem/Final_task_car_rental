@@ -29,4 +29,7 @@ public class CarEntity implements BaseEntity<Long> {
     @OneToOne(mappedBy = "carEntity", fetch = FetchType.EAGER)
     @JoinColumn(name = "order_id")
     private OrderEntity orderEntity;
+
+    @OneToOne(mappedBy = "car", cascade = CascadeType.ALL)
+    private CarPhoto carPhoto;
 }

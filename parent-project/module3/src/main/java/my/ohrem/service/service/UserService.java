@@ -1,6 +1,7 @@
 package my.ohrem.service.service;
 
 import my.ohrem.model.UserEntity;
+import my.ohrem.model.UserPhoto;
 import my.ohrem.repository.UserEntityDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,12 +16,16 @@ public class UserService {
     @Autowired
     UserEntityDao userEntityDao;
 
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public void add(UserEntity user) { //TODO Add photo
+    @Transactional
+    public void add(UserEntity user, byte[] photo) {
+        if (user.getUserPhoto() == null) {
+            UserPhoto userPhoto = new UserPhoto();
+            userPhoto.setUser(user);
+            userPhoto.setPhoto(photo);
+            user.setUserPhoto(userPhoto);
+        }
         userEntityDao.create(user);
     }
-
-    @Transactional(readOnly = true)
     public List<UserEntity> getAll() {
         return userEntityDao.findAll();
     }

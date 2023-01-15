@@ -91,14 +91,14 @@
     </changeSet>
     <changeSet id="7" author="ohrem25032002@gmail.com">
         <sql>
-            CREATE TABLE IF NOT EXISTS `user_photo`
+            CREATE TABLE IF NOT EXISTS `car_photo`
             (
-                `ID`         VARCHAR(256) PRIMARY KEY NOT NULL,
-                `user_id`    BIGINT(19)               NOT NULL,
-                `user_photo` MEDIUMBLOB               NOT NULL,
-                CONSTRAINT `user_photo`
-                FOREIGN KEY (`user_id`)
-                REFERENCES `app_user` (`id`)
+                `PHOTO_ID`   VARCHAR(256) PRIMARY KEY NOT NULL,
+                `car_id`    BIGINT(19)                NOT NULL,
+                `car_photo` MEDIUMBLOB               NOT NULL,
+                CONSTRAINT `car_photo`
+                FOREIGN KEY (`car_id`)
+                REFERENCES `car` (`id`)
                 ON DELETE CASCADE
                 ON UPDATE CASCADE
                 );
@@ -121,13 +121,13 @@
     <changeSet id="9" author="ohrem25032002@gmail.com">
         <sql>
             INSERT INTO car VALUES (
-                                            '1',
-                                            'BMW',
-                                            'M3',
-                                            'black',
-                                            '15',
-                                            true
-                                        );
+                '1',
+                'BMW',
+                'M3',
+                'black',
+                '15',
+                 true
+                                    );
         </sql>
     </changeSet>
 </databaseChangeLog>
