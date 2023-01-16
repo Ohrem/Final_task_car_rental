@@ -1,4 +1,5 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -36,15 +37,26 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">
-                        Select action
+                        Show and redact
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/hello/add-product.html">Show orders</a></li>
                         <li><a class="dropdown-item" href="/hello/add-department.html">Show cars</a></li>
                         <li><a class="dropdown-item" href="/hello/add-employee.html">Show users</a></li>
                     </ul>
-                </li>
                 <li class="nav-item">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Add car/user/order
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/hello/add-user.html">Add user</a></li>
+                        <li><a class="dropdown-item" href="/hello/add-department.html">Add car</a></li>
+                        <li><a class="dropdown-item" href="/hello/add-employee.html">Add order</a></li>
+                    </ul>
+                <li class="nav-item">
+
                     <security:authorize access="isAuthenticated()">
                         <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
                     </security:authorize>

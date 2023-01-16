@@ -15,11 +15,11 @@ import java.util.Map;
 
 @Controller
 public class AddUserController {
-@Autowired
+    @Autowired
     private UserService userService;
     @GetMapping("/add-user.html")
     public String showEmployeeList() {
-      return "add_user";
+        return "add_user";
     }
 
     @PostMapping("/add-user.html")

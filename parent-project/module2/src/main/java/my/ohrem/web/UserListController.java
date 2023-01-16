@@ -1,5 +1,4 @@
 package my.ohrem.web;
-
 import my.ohrem.model.UserEntity;
 
 import my.ohrem.service.service.UserService;
@@ -26,10 +25,10 @@ public class UserListController {
     }
 
     @ResponseBody
-    @GetMapping("/image/{employee.id}/photo.jpg")
-    public byte[] getImage(@PathVariable("employee.id") long employeeId) {
-        System.out.println("Call getImage: " + employeeId);
-        UserEntity user = userService.getById(employeeId);
+    @GetMapping("/image/{user.id}/photo.jpg")
+    public byte[] getImage(@PathVariable("user.id") long userId) {
+        System.out.println("Call getImage: " + userId);
+        UserEntity user = userService.getById(userId);
         return user.getUserPhoto().getPhoto();
     }
 }

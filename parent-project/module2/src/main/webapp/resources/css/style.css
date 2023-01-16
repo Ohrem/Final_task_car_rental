@@ -13,7 +13,7 @@ body, html {
     flex: 1 1 auto;
 }
 
-.card{
+.card-container{
     margin-left: 20px;
     display: flex;
     flex-direction: row;

@@ -17,7 +17,7 @@
             <td><c:out value="${user.id}"/></td>
             <td><c:out value="${user.name}"/></td>
             <td><c:out value="${user.balance}"/></td>
-            <td><image src="/hello/image/${user.id}/photo.jpg" class="img-thumbnail"/></td>
+            <td><image src="/hello/image/${user.id}/photo.jpg" class="img-user"></image> </td>
         </tr>
     </c:forEach>
 </table>

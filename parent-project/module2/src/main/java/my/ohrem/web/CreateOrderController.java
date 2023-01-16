@@ -44,7 +44,7 @@ public class CreateOrderController {
 //    @Secured("ADMIN")
     public ModelAndView getCreateOrder() {
         ModelAndView modelAndView = new ModelAndView("createOrder");
-        modelAndView.addObject("allCars", carService.getAll());
+        modelAndView.addObject("allCars", carService.getAllAvailable());
 
         return modelAndView;
     }

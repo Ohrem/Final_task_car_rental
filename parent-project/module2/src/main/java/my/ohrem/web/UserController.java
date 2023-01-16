@@ -45,7 +45,7 @@ public class UserController {
     @GetMapping("/getAllCars.html")
     public ModelAndView getAllCars() {
         return new ModelAndView("getAllCars",
-                Map.of("cars", carService.getAll()));
+                Map.of("cars", carService.getAllAvailable()));
     }
 
     @GetMapping("/userResultInfo.html")

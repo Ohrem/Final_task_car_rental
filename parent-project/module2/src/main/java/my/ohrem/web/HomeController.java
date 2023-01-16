@@ -15,7 +15,7 @@ public class HomeController {
     public ModelAndView homePage() {
         ModelAndView modelAndView = new ModelAndView("index");
 
-        modelAndView.addObject("cars", carService.getAll());
+        modelAndView.addObject("cars", carService.getAllAvailable());
 
         System.out.println("Call homePage");
         return modelAndView;
