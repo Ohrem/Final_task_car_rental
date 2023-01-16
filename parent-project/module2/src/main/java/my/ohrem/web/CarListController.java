@@ -27,7 +27,7 @@ public class    CarListController {
     }
 
     @ResponseBody
-    @GetMapping("/image/{car.id}/photo.jpg")
+    @GetMapping("/image/{car.id}/carPhoto.jpg")
     public byte[] getCarImage(@PathVariable("car.id") long carId) {
         System.out.println("Call getImage: " + carId);
         CarEntity car = carService.getCarEntity(carId);
