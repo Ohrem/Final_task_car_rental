@@ -29,7 +29,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Show cars</h5>
                     <p class="card-text">Here you can see information about available cars. Pagination, in-page search and filtering implemented. </p>
-                    <a href="/hello/list-cars.html" class="btn btn-primary">check cars</a>
+                    <a href="/hello/car-list.html" class="btn btn-primary">check cars</a>
                 </div>
             </div>
             <div class="card" style="width: 18rem;">

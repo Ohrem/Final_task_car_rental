@@ -2,7 +2,6 @@ package my.ohrem.service.service;
 
 import my.ohrem.model.CarEntity;
 import my.ohrem.model.OrderEntity;
-import my.ohrem.model.PaymentEntity;
 import my.ohrem.model.UserEntity;
 import my.ohrem.repository.CarEntityDao;
 import my.ohrem.repository.OrderEntityDao;
@@ -28,11 +27,7 @@ public class CreateOrderService {
     private PaymentEntityDao paymentEntityDao;
 
     public String createOrderForUser(OrderEntity orderEntity, UserEntity user) {
-        System.out.println(user);
-
-        if(user.getOrderEntity() != null){
-            return "index"; //TODO redirect to order delete page
-        }
+        System.out.println("USER" + user);
 
         orderEntity.setUserEntity(user);
         user.setOrderEntity(orderEntity);
@@ -42,15 +37,17 @@ public class CreateOrderService {
         return "createPaymentEntity";
     }
 
-    public void addCarToOrder(Long id, UserEntity user, OrderEntity orderEntity) {
+    public CarEntity findCarAndCheckIfAvailable(Long id) {
         CarEntity carEntity = carEntityDao.findById(id);
 
-        carEntity.setIsAvailable(false);
+        if (carEntity.getIsAvailable()) {
+            carEntity.setIsAvailable(false);
+            return carEntity;
+        } else return null;
+    }
 
-        orderEntity.setCarEntity(carEntity);
-        carEntity.setOrderEntity(orderEntity);
-
-        carEntityDao.update(carEntity);
+    public void updateDb(OrderEntity orderEntity, CarEntity carEntity) {
         orderEntityDao.update(orderEntity);
+        carEntityDao.update(carEntity);
     }
 }

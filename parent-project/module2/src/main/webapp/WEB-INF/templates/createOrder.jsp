@@ -37,7 +37,6 @@
                 </div>
                 <div class="input-group mb-3">
                     <select name="carId">
-                        <option value="-1">Select a car</option>
                         <c:forEach items="${allCars}" var="car">
                             <option value="${car.id}">${car.brand}, ${car.model}, ${car.color}, ${car.price}</option>
                         </c:forEach>

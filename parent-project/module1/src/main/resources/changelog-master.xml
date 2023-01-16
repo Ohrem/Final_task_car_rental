@@ -50,7 +50,7 @@
             `user_id` BIGINT(19),
             `begin_date` DATE,
             `end_date` DATE,
-            `message` VARCHAR(64) NOT NULL,
+            `message` VARCHAR(64),
             CONSTRAINT `f_car_id` FOREIGN KEY (`car_id`)
                 REFERENCES `car` (`id`)
                  ON DELETE CASCADE

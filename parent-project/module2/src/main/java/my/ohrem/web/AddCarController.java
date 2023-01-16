@@ -24,7 +24,7 @@ public class AddCarController {
     }
 
     @PostMapping("/add-car.html")
-    @Secured("ROLE_ADMIN")
+    //@Secured("ADMIN")
     @SneakyThrows
     public String addCar(@RequestParam("photo") MultipartFile file, CarEntity car) {
         System.out.println("Call addCar: " + car);

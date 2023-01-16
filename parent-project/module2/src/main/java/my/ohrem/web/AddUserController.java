@@ -2,6 +2,7 @@ package my.ohrem.web;
 
 import lombok.SneakyThrows;
 import my.ohrem.model.UserEntity;
+import my.ohrem.request.AddUserForAdminRequest;
 import my.ohrem.service.service.AppUserService;
 import my.ohrem.service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +26,20 @@ public class AddUserController {
     @PostMapping("/add-user.html")
     @Secured("ROLE_ADMIN")
     @SneakyThrows
-    public String addUser(@RequestParam("photo") MultipartFile file, UserEntity user) {
-        System.out.println("Call addEployee: " + user);
+    public String addUser(@RequestParam("photo") MultipartFile file, AddUserForAdminRequest request) {
+        System.out.println("Call addEployee: " + request);
         System.out.println(file.getOriginalFilename() + ": " + file.getSize());
+
+        UserEntity user = UserEntity.builder()
+                .name(request.getName())
+                .surname(request.getSurname())
+                .email(request.getEmail())
+                .password("{noop}" + request.getPassword())
+                .phone(request.getPhone())
+                .role(request.getRole())
+                .balance(0.0)
+                .build();
+
         userService.add(user, file.getBytes());
         return "redirect:/user-list.html";
     }

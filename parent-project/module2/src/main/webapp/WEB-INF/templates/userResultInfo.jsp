@@ -13,7 +13,18 @@
 <body>
   Payment sum: ${paymentSum}
     Rest of payment: ${restPayment}
+    User balance: ${userBalance}
     Car: ${orderCar}
     Remaining days: ${remainingDays}
+    Is order paid for: ${isPaid}
+  <form action="addBalance.html">
+    <input type="submit" value="Add money" />
+  </form>
+  <form action="cancelOrder.html">
+    <input type="submit" value="Cancel order" />
+  </form>
+  <form action="processPayment.html">
+    <input type="submit" value="Payment" />
+  </form>
 </body>
 </html>

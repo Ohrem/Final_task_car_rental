@@ -1,5 +1,6 @@
 package my.ohrem.web;
 
+import my.ohrem.model.CarEntity;
 import my.ohrem.model.OrderEntity;
 import my.ohrem.model.PaymentEntity;
 import my.ohrem.model.UserEntity;
@@ -66,28 +67,61 @@ public class CreateOrderController {
     public ModelAndView createOrderForUser(CreateOrderForUserRequest request) throws ParseException {
         UserEntity user = userGetFromContextHolderService.getUserFromSecurityContextHolder();
 
+        System.out.println("REQUEST IN CREATEORDERSERVICE: " + request);
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
+        LocalDate beginDate = LocalDate.parse(request.getBeginDate(), formatter);
+        LocalDate endDate = LocalDate.parse(request.getEndDate(), formatter);
+
+        if(beginDate.isBefore(LocalDate.now())
+                || endDate.isBefore(beginDate)
+                || endDate.isAfter(LocalDate.now().plusYears(1))) {
+            return new ModelAndView("dateError"); //TODO add dateError jsp page
+        }
+
+//        if(request.getBeginDate() == null || request.getEndDate() == null || request.getCarId() == null) {
+//            return new ModelAndView("errorPage"); //TODO error page
+//        }
+
+        if(user.getOrderEntity() != null){
+            return new ModelAndView("index"); //TODO redirect to order delete page
+        }
+
+        CarEntity carEntity = createOrderService.findCarAndCheckIfAvailable(request.getCarId());
+
         OrderEntity orderEntity = OrderEntity.builder()
-                .beginDate(LocalDate.parse(request.getBeginDate(), formatter))
-                .endDate(LocalDate.parse(request.getEndDate(), formatter))
+                .beginDate(beginDate)
+                .endDate(endDate)
                 .message(request.getMessage())
+                .carEntity(carEntity)
                 .build();
 
-        System.out.println("ORDERENTITY: " + orderEntity);
-
-        createOrderService.addCarToOrder(request.getCarId(), user, orderEntity);
+       carEntity.setOrderEntity(orderEntity);
 
         String redirect = createOrderService.createOrderForUser(orderEntity, user);
+
+        createOrderService.updateDb(orderEntity, carEntity);
+
         return new ModelAndView(redirect);
     }
 
     @PostMapping("/paymentEntity.html")
     public String createPaymentEntity(CreatePaymentEntityRequest request) {
+        UserEntity user = userGetFromContextHolderService.getUserFromSecurityContextHolder();
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
+        LocalDate paymentDate = LocalDate.parse(request.getPaymentDate(), formatter);
+
+        if(paymentDate.isBefore(LocalDate.now())
+                || paymentDate.isAfter(user.getOrderEntity().getBeginDate())) {
+            return "redirect:/dateError.html";
+        }
+
         PaymentEntity paymentEntity = PaymentEntity.builder()
-                .paymentDate(LocalDate.parse(request.getPaymentDate(), formatter))
+                .paymentDate(paymentDate)
+                .isPaid(false)
                 .build();
 
         createPaymentEntityService.createPaymentEntity(paymentEntity, userGetFromContextHolderService.getUserFromSecurityContextHolder());
@@ -96,17 +130,17 @@ public class CreateOrderController {
     }
 
     @PostMapping("/processPayment.html")
-    public ModelAndView paymentProcessing(ProcessPaymentRequest request) {
+    public String paymentProcessing(ProcessPaymentRequest request) {
         UserEntity user = userGetFromContextHolderService.getUserFromSecurityContextHolder();
 
         PaymentEntity paymentEntity = user.getOrderEntity().getPaymentEntity();
 
         if(request.getCheckoutPayment() > paymentEntity.getPaymentSum()) {
-            return new ModelAndView("error"); //TODO create error page
+            return "redirect:/error.html"; //TODO create error page and add controller!!!!!
         }
 
         if(user.getBalance() - request.getCheckoutPayment() <= 0) {
-            //TODO add money to the balance service redirect
+            return "redirect:/addBalance.html"; //TODO add money to the balance service redirect
         }
 
         user.setBalance(user.getBalance() - request.getCheckoutPayment());
@@ -114,12 +148,14 @@ public class CreateOrderController {
 
         if(paymentEntity.getPaymentSum() == 0) {
             paymentEntity.setIsPaid(true);
-            //TODO redirect to successful payment page
+            userService.update(user);
+            paymentService.update(paymentEntity);
+            return "redirect:/userResultInfo.html";
         }
 
         userService.update(user);
         paymentService.update(paymentEntity);
 
-        return new ModelAndView("index"); //TODO add redirect
+        return "redirect:/index.html"; //TODO add redirect
     }
 }
