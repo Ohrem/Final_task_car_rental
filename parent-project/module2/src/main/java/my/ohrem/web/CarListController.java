@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Map;
 
 @Controller
-public class CarListController {
+public class    CarListController {
     @Autowired
     private CarService carService;
 
@@ -28,7 +28,7 @@ public class CarListController {
 
     @ResponseBody
     @GetMapping("/image/{car.id}/photo.jpg")
-    public byte[] getImage(@PathVariable("car.id") long carId) {
+    public byte[] getCarImage(@PathVariable("car.id") long carId) {
         System.out.println("Call getImage: " + carId);
         CarEntity car = carService.getCarEntity(carId);
         return car.getCarPhoto().getPhoto();

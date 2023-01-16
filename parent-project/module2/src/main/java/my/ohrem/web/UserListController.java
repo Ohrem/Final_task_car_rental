@@ -23,13 +23,13 @@ public class UserListController {
                 Map.of("users", userService.getAll())
         );
     }
-
-    @ResponseBody
-    @GetMapping("/image/{user.id}/photo.jpg")
-    public byte[] getImage(@PathVariable("user.id") long userId) {
-        System.out.println("Call getImage: " + userId);
-        UserEntity user = userService.getById(userId);
-        return user.getUserPhoto().getPhoto();
-    }
+//
+//    @ResponseBody
+//    @GetMapping("/image/{user.id}/photo.jpg")
+//    public byte[] getImage(@PathVariable("user.id") long userId) {
+//        System.out.println("Call getImage: " + userId);
+//        UserEntity user = userService.getById(userId);
+//        return user.getUserPhoto().getPhoto();
+//    }
 }
 

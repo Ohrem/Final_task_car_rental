@@ -29,7 +29,7 @@ public class AddCarController {
     public String addCar(@RequestParam("photo") MultipartFile file, CarEntity car) {
         System.out.println("Call addCar: " + car);
         System.out.println(file.getOriginalFilename() + ": " + file.getSize());
-        carService.addNewCar(car, file.getBytes());
+        carService.add(car, file.getBytes());
         return "redirect:/car-list.html";
     }
 }

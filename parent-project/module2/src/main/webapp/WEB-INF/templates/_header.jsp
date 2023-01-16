@@ -13,7 +13,7 @@
 <body>
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
-        <img src="${pageContext.request.contextPath}/resources/imgs/330-3304412_png-transparent-car-car-rental-logo-png.png"
+        <img src="${pageContext.request.contextPath}/resources/imgs/67-670378_car-image-rent-a-car-logo.png"
              alt="" width="120" height="50"/>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

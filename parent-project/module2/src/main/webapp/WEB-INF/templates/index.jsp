@@ -20,15 +20,25 @@
     </header>
 
     <main class="main"><h1>Home page</h1>
+
         <div class="card-container">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" style="width: 280px; height: 200px; margin-left: 4px;margin-top: 4px"
+                     src="https://www.rentacarkerala.in/wp-content/uploads/2018/10/best.jpg"
+                     alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Show cars</h5>
+                    <p class="card-text">Here you can see information about available cars. Pagination, in-page search and filtering implemented. </p>
+                    <a href="/hello/list-cars.html" class="btn btn-primary">check cars</a>
+                </div>
+            </div>
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" style="width: 280px; height: 200px; margin-left: 4px; margin-top: 4px"
                      src="https://www.talk-business.co.uk/wp-content/uploads/2017/04/car-leasing.jpg"
                      alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
+                    <h5 class="card-title">Rent a car</h5>
+                    <p class="card-text">By clicking on the link, register a car after going through 3 easy operations.</p>
                     <a href="/hello/createOrder.html" class="btn btn-primary">Go rent a car</a>
                 </div>
             </div>
@@ -39,17 +49,15 @@
                      alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Order result info</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
+                    <p class="card-text">View information about the rental application, car,remaining amount, remaining time.</p>
                     <a href="/hello/userResultInfo.html" class="btn btn-primary">check Result</a>
                 </div>
             </div>
         </div>
 
-
         <table style="width:100%" class="table">
             <tr>
-                <th>Cars</th>
+                <th>Available Cars</th>
             </tr>
             <c:forEach items="${cars}" var="car">
                 <tr>
@@ -57,6 +65,12 @@
                     <td><c:out value="${car.model}"/></td>
                     <td><c:out value="${car.color}"/></td>
                     <td><c:out value="${car.price}"/></td>
+                    <td><a href="#" class="btn btn-light btn-sm active" role="button" aria-pressed="true">About the car</a></td>
+                    <td><a href="createOrder.html" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Rent car</a></td>
+
+                <%--                    <td><button type="button" onclick="window.location.href = 'https://google.com';" class="btn btn-light btn-sm">About the car</button></td>--%>
+<%--                    <td><button type="button" onclick="window.location.href = 'https://google.com';" class="btn btn-primary btn-sm">Rent a car</button></td>--%>
+
                 </tr>
             </c:forEach>
         </table>
