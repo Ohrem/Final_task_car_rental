@@ -3,22 +3,20 @@ package my.ohrem.web;
 import lombok.SneakyThrows;
 import my.ohrem.model.UserEntity;
 import my.ohrem.request.AddUserForAdminRequest;
-import my.ohrem.service.service.AppUserService;
 import my.ohrem.service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Map;
 
 @Controller
 public class AddUserController {
     @Autowired
     private UserService userService;
     @GetMapping("/add-user.html")
+    @Secured("ROLE_ADMIN")
     public String showEmployeeList() {
         return "add_user";
     }
@@ -41,6 +39,7 @@ public class AddUserController {
                 .build();
 
         userService.add(user, file.getBytes());
+
         return "redirect:/user-list.html";
     }
 }

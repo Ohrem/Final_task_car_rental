@@ -3,6 +3,7 @@ import my.ohrem.model.UserEntity;
 
 import my.ohrem.service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ public class UserListController {
     private UserService userService;
 
     @GetMapping("/user-list.html")
+    @Secured("ROLE_ADMIN")
     public ModelAndView showEmployeeList() {
         return new ModelAndView(
                 "getAllUsers",

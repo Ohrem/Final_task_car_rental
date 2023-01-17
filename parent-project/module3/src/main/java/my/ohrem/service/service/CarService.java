@@ -41,6 +41,16 @@ public class CarService {
         carEntityDao.create(car);
     }
 
+    @Transactional
+    public void addPhotoToCarEntity(CarEntity carEntity, byte[] photo) {
+        if (carEntity.getCarPhoto() == null) {
+            CarPhoto carPhoto = new CarPhoto();
+            carPhoto.setCar(carEntity);
+            carPhoto.setPhoto(photo);
+            carEntity.setCarPhoto(carPhoto);
+        }
+    }
+
     public List<CarEntity> getAllAvailable() {
         return carEntityDao.readAll().stream()
                 .filter(car -> car.getIsAvailable().equals(true))

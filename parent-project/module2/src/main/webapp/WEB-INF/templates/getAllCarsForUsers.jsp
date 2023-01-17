@@ -17,9 +17,6 @@
             <h1 style="padding: 0">All cars </h1>
         </div>
         <div class="row">
-            <form method="get" action="/hello/add-car.html">
-                <input class="dropdown-item" type="submit" value="Add car">
-            </form>
             <table class="table table-light table-bordered align-middle table table-striped"
                    style="background-color: #d1e7dd">
                 <thead>
@@ -39,30 +36,6 @@
                         <td>
                             <image src="/hello/image/${car.id}/carPhoto.jpg" class="img-car"
                                    style="width: 120px; height: 80px"></image>
-                        </td>
-                        <td>
-                            <div class="btn-group dropend">
-                                <button type="button" class="btn btn-sm btn-success dropdown-toggle"
-                                        data-bs-toggle="dropdown" aria-expanded="false">Actions
-                                </button>
-                                <ul class="dropdown-menu" style="">
-                                    <li>
-                                        <form method="get" action="/hello/${car.id}/updateCarAdmin.html">
-                                            <input class="dropdown-item" type="submit" value="Update">
-                                        </form>
-                                    </li>
-                                    <li>
-                                        <form method="get" action="/hello/${car.id}/deleteCarAdmin.html">
-                                            <input class="dropdown-item" type="submit" value="Delete">
-                                        </form>
-                                    </li>
-                                    <li>
-                                        <form method="get" action="/hello/${car.id}/viewCar.html">
-                                            <input class="dropdown-item" type="submit" value="View car">
-                                        </form>
-                                    </li>
-                                </ul>
-                            </div>
                         </td>
                     </tr>
                 </c:forEach>

@@ -37,7 +37,7 @@
                     <div class="row">
                         <div class="col sm-5">
                             <select class="form-control" id="exampleFormControlSelect1" name="carId">
-                                <c:forEach items="${allCars}" var="car">
+                                <c:forEach items="${cars}" var="car">
                                     <option value="${car.id}">${car.brand}, ${car.model}, ${car.color}, ${car.price}</option>
                                 </c:forEach>
                             </select>

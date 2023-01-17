@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Web shop demo</title>
+    <title>Car rental index</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
@@ -30,39 +30,30 @@
                         Cars
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/hello/car-list.html">Show cars</a></li>
-                        <li><a class="dropdown-item" href="/hello/add-car.html">Add car</a></li>
+                        <li><a class="dropdown-item" href="/hello/car-list-user.html">Show cars</a></li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Show and redact
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/hello/add-product.html">Show orders</a></li>
-                        <li><a class="dropdown-item" href="/hello/add-department.html">Show cars</a></li>
-                        <li><a class="dropdown-item" href="/hello/add-employee.html">Show users</a></li>
-                    </ul>
-                <li class="nav-item">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Add car/user/order
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/hello/add-user.html">Add user</a></li>
-                        <li><a class="dropdown-item" href="/hello/add-department.html">Add car</a></li>
-                        <li><a class="dropdown-item" href="/hello/add-employee.html">Add order</a></li>
-                    </ul>
-                <li class="nav-item">
 
+                <li class="nav-item dropdown">
                     <security:authorize access="isAuthenticated()">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
                     </security:authorize>
                     <security:authorize access="!isAuthenticated()">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
                     </security:authorize>
+                    <security:authorize access="hasRole('ADMIN')">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        ADMIN PANEL
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/hello/user-list.html">ADMIN User changes</a></li>
+                        <li><a class="dropdown-item" href="/hello/car-list.html">ADMIN Car changes</a></li>
+                        <li><a class="dropdown-item" href="/hello/add-employee.html">ADMIN Order changes</a></li>
+                    </ul>
+                </li>
+                </security:authorize>
                 </li>
             </ul>
             <img src="${pageContext.request.contextPath}/resources/imgs/user_icon_150670.png" alt="" width="25"

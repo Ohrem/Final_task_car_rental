@@ -31,7 +31,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .antMatchers(HttpMethod.GET, "/list*").hasRole("USER")
                 .and()
                 .csrf().disable()
-                .formLogin();
+                .formLogin()
+                .and()
+                .exceptionHandling().accessDeniedPage("/securityError.html");
     }
 
     @Autowired

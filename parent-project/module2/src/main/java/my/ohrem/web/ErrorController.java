@@ -11,4 +11,9 @@ public class ErrorController {
     public ModelAndView dateError() {
         return new ModelAndView("dateError");
     }
+
+    @GetMapping("/securityError.html")
+    public ModelAndView securityError() {
+        return new ModelAndView("securityError");
+    }
 }

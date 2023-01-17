@@ -3,16 +3,19 @@ package my.ohrem.web;
 import my.ohrem.model.CarDescription;
 import my.ohrem.model.CarEntity;
 import my.ohrem.repository.CarDescriptionDao;
-import my.ohrem.request.AddCarRequest;
-import my.ohrem.request.PassIdRequest;
+import my.ohrem.request.UpdateCarRequest;
 import my.ohrem.service.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.io.IOException;
 
 @Controller
 public class UpdateCarController {
@@ -24,6 +27,7 @@ public class UpdateCarController {
     private CarDescriptionDao carDescriptionDao;
 
     @GetMapping("/{car.id}/updateCarAdmin.html")
+    @Secured("ROLE_ADMIN")
     public ModelAndView updateCar(@PathVariable("car.id") long id) {
         ModelAndView modelAndView = new ModelAndView("updateCarAdmin");
 
@@ -33,7 +37,8 @@ public class UpdateCarController {
     }
 
     @PostMapping("/updateCarAdmin.html")
-    public String updateCarPost(AddCarRequest request) {
+    @Secured("ROLE_ADMIN")
+    public String updateCarPost(@RequestParam("photo") MultipartFile file, UpdateCarRequest request) throws IOException {
         CarEntity car = carService.getCarEntity(request.getCarId());
         CarDescription carDescription;
 
@@ -56,6 +61,8 @@ public class UpdateCarController {
         car.setIsAvailable(request.getIsAvailable());
 
         carDescription.setCar(car);
+
+        carService.addPhotoToCarEntity(car, file.getBytes());
 
         carService.update(car);
         carDescriptionDao.update(carDescription);

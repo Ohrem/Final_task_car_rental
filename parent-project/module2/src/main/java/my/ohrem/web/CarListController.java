@@ -1,10 +1,9 @@
 package my.ohrem.web;
 
 import my.ohrem.model.CarEntity;
-import my.ohrem.model.UserEntity;
 import my.ohrem.service.service.CarService;
-import my.ohrem.service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,9 +18,19 @@ public class CarListController {
     private CarService carService;
 
     @GetMapping("/car-list.html")
+    @Secured("ROLE_ADMIN")
     public ModelAndView showCarList() {
         return new ModelAndView(
                 "getAllCars",
+                Map.of("cars", carService.getAllAvailable())
+        );
+    }
+
+    @GetMapping("/car-list-user.html")
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
+    public ModelAndView showCarListForUsers() {
+        return new ModelAndView(
+                "getAllCarsForUsers",
                 Map.of("cars", carService.getAllAvailable())
         );
     }

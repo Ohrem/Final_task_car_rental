@@ -52,12 +52,14 @@ public class UserController {
 //    }
 
     @GetMapping("/getAllCars.html")
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     public ModelAndView getAllCars() {
         return new ModelAndView("getAllCars",
                 Map.of("cars", carService.getAllAvailable()));
     }
 
     @GetMapping("/userResultInfo.html")
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     public ModelAndView getUserResultInfo() {
         UserEntity user = userGetFromContextHolderService.getUserFromSecurityContextHolder();
         ModelAndView modelAndView;
@@ -76,12 +78,16 @@ public class UserController {
             modelAndView.addObject("userBalance", user.getBalance());
             modelAndView.addObject("isPaid", user.getOrderEntity().getPaymentEntity().getIsPaid().toString());
 
-        } else modelAndView = new ModelAndView("createOrder");
+        } else {
+            modelAndView = new ModelAndView("createOrder");
+            modelAndView.addObject("cars", carService.getAllAvailable());
+        }
 
         return modelAndView;
     }
 
     @GetMapping("/cancelOrder.html")
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     public String cancelOrder() {
         UserEntity user = userGetFromContextHolderService.getUserFromSecurityContextHolder();
 

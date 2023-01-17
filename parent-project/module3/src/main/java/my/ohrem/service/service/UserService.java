@@ -39,4 +39,8 @@ public class UserService {
         userEntityDao.update(user);
     }
 
+    public void delete(long id) { //TODO check
+        userEntityDao.delete(userEntityDao.findById(id));
+    }
+
 }

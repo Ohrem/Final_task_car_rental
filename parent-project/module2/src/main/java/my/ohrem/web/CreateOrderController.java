@@ -10,6 +10,7 @@ import my.ohrem.request.ProcessPaymentRequest;
 import my.ohrem.service.service.*;
 import my.ohrem.util.GetUserFromContextHolderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,15 +43,16 @@ public class CreateOrderController {
     private GetUserFromContextHolderService userGetFromContextHolderService;
 
     @GetMapping("/createOrder.html")
-//    @Secured("ADMIN")
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     public ModelAndView getCreateOrder() {
         ModelAndView modelAndView = new ModelAndView("createOrder");
-        modelAndView.addObject("allCars", carService.getAllAvailable());
+        modelAndView.addObject("cars", carService.getAllAvailable());
 
         return modelAndView;
     }
 
     @GetMapping("/processPayment.html")
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     public ModelAndView getProcessPayment() {
         UserEntity user = userGetFromContextHolderService.getUserFromSecurityContextHolder();
 
@@ -63,7 +65,7 @@ public class CreateOrderController {
     }
 
     @PostMapping("/createOrder.html")
-//    @Secured("ADMIN")
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     public ModelAndView createOrderForUser(CreateOrderForUserRequest request) throws ParseException {
         UserEntity user = userGetFromContextHolderService.getUserFromSecurityContextHolder();
 
@@ -75,8 +77,8 @@ public class CreateOrderController {
         LocalDate endDate = LocalDate.parse(request.getEndDate(), formatter);
 
         if(beginDate.isBefore(LocalDate.now())
-                || endDate.isBefore(beginDate)
-                || endDate.isAfter(LocalDate.now().plusYears(1))) {
+           || endDate.isBefore(beginDate)
+           || endDate.isAfter(LocalDate.now().plusYears(1))) {
             return new ModelAndView("dateError"); //TODO add dateError jsp page
         }
 
@@ -97,7 +99,7 @@ public class CreateOrderController {
                 .carEntity(carEntity)
                 .build();
 
-       carEntity.setOrderEntity(orderEntity);
+        carEntity.setOrderEntity(orderEntity);
 
         String redirect = createOrderService.createOrderForUser(orderEntity, user);
 
@@ -107,6 +109,7 @@ public class CreateOrderController {
     }
 
     @PostMapping("/paymentEntity.html")
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     public String createPaymentEntity(CreatePaymentEntityRequest request) {
         UserEntity user = userGetFromContextHolderService.getUserFromSecurityContextHolder();
 
@@ -115,7 +118,7 @@ public class CreateOrderController {
         LocalDate paymentDate = LocalDate.parse(request.getPaymentDate(), formatter);
 
         if(paymentDate.isBefore(LocalDate.now())
-                || paymentDate.isAfter(user.getOrderEntity().getBeginDate())) {
+           || paymentDate.isAfter(user.getOrderEntity().getBeginDate())) {
             return "redirect:/dateError.html";
         }
 
@@ -130,6 +133,7 @@ public class CreateOrderController {
     }
 
     @PostMapping("/processPayment.html")
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     public String paymentProcessing(ProcessPaymentRequest request) {
         UserEntity user = userGetFromContextHolderService.getUserFromSecurityContextHolder();
 
