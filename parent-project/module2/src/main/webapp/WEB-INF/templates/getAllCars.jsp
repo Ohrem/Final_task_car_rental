@@ -60,7 +60,7 @@
                                             <form method="POST">
                                                 <input type="hidden" name="command" value="to_client_deposits">
                                                 <input type="hidden" name="user_id" value="${car.id}">
-                                                <input class="dropdown-item" type="submit" value="View user">
+                                                <input class="dropdown-item" type="submit" value="View car">
                                             </form>
                                         </li>
                                     </ul>
