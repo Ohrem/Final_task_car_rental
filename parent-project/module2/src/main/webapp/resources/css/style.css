@@ -16,10 +16,13 @@ body, html {
 .card-container{
     display: flex;
     flex-direction: row;
-    margin: 0 -5px;
+    margin: 0 350px;
 }
 .card{
-    margin: 0 5px;
+    margin: 0 20px;
+}
+element.style{
+    background-color: white;
 }
 
 
