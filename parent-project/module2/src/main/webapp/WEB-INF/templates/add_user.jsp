@@ -16,9 +16,6 @@
                 Add user
             </h1>
         </div>
-        <div>
-
-        </div>
         <div class="row" style="margin-top: 10px">
             <form class="row g-3" action="/hello/add-user.html" method="post" onsubmit="return confirm('Уверены?')" enctype="multipart/form-data">
                 <div class="col-6">
@@ -36,7 +33,7 @@
                     <input name="surname" type="text" class="form-control" id="inputSurname" placeholder="Ivanov"
                            pattern="^([A-Za-z]{1,25})$" required>
                 </div>
-                <div class="col-5">
+                <div class="col-6">
                     <label for="inputEmail" class="form-label">Email</label>
                     <input name="email" type="text" class="form-control" id="inputEmail" placeholder="impress@mail.ru"
                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
@@ -48,13 +45,13 @@
                            title="Must contain at least one number and one uppercase and lowercase letter, and at least 4 or more characters"
                            required>
                 </div>
-                <div class="col-3">
+                <div class="col-4">
                     <label for="inputPhone" class="form-label">Phone</label>
                     <input name="phone" type="tel" class="form-control" id="inputPhone" placeholder="+375447714281"
                            pattern="^(\+)?[0-9]{5,12}"
                            required>
                 </div>
-                <div class="col-3">
+                <div class="col-4">
                     <label for="inputRole" class="form-label">Role</label>
                     <input name="role" type="text" class="form-control" id="inputRole" value="USER" readonly required>
                 </div>
