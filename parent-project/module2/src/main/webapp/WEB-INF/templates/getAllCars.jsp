@@ -16,8 +16,8 @@
     <tr style="width: 100%">
       <td><c:out value="${car.id}"/></td>
       <td><c:out value="${car.brand}"/></td>
-      <td><c:out value="${user.price}"/></td>
-      <td><image src="/hello/image/${car.id}/carPhoto.jpg" class="img-thumbnail" style="width: 100px; height: 100px"/></td>
+      <td><c:out value="${car.price}"/></td>
+      <td><image src="/hello/image/${car.id}/carPhoto.jpg" class="img-thumbnail" style="width: 180px; height: 100px"/></td>
     </tr>
   </c:forEach>
 </table>

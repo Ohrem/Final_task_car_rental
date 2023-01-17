@@ -32,4 +32,7 @@ public class CarEntity implements BaseEntity<Long> {
 
     @OneToOne(mappedBy = "car", cascade = CascadeType.ALL)
     private CarPhoto carPhoto;
+
+    @OneToOne(mappedBy = "car", cascade = CascadeType.ALL)
+    private CarDescription carDescription;
 }

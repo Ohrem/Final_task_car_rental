@@ -4,14 +4,15 @@ import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+
 @Entity
-@Table(name = "car_photo")
+@Table(name = "car_description")
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class CarPhoto {
+public class CarDescription {
     @Id
-    @Column(name = "PHOTO_ID")
+    @Column(name = "DESCRIPTION_ID")
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
@@ -20,8 +21,8 @@ public class CarPhoto {
     @JoinColumn(name = "car_id")
     private CarEntity car;
 
-    @Lob
-    @Column(name = "car_photo", columnDefinition = "MEDIUMBLOB NOT NULL")
-    private byte[] photo;
+    @Column
+    private String description;
+
 
 }

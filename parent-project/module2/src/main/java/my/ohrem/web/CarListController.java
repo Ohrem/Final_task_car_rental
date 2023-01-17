@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Map;
 
 @Controller
-public class    CarListController {
+public class CarListController {
     @Autowired
     private CarService carService;
 

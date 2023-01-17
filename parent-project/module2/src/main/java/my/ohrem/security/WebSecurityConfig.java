@@ -22,9 +22,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
-//                .antMatchers("/static/*").permitAll()
+                .antMatchers("/static/*").permitAll()
 //                .antMatchers(HttpMethod.POST, "/add*").hasRole("ADMIN")
-//                .antMatchers(HttpMethod.POST, "/add*").hasRole("USER")
+//                .antMatchers(HttpMethod.POST, "/add*").hasRole("ADMIN")
 //                .antMatchers(HttpMethod.POST, "/edit*").hasRole("ADMIN")
 //                .antMatchers(HttpMethod.POST, "/delete*").hasRole("ADMIN")
 //                .antMatchers(HttpMethod.POST, "/list*").hasRole("ADMIN")
