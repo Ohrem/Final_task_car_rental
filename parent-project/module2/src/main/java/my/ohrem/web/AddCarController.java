@@ -1,8 +1,10 @@
 package my.ohrem.web;
 
 import lombok.SneakyThrows;
+import my.ohrem.model.CarDescription;
 import my.ohrem.model.CarEntity;
 import my.ohrem.model.UserEntity;
+import my.ohrem.request.AddCarRequest;
 import my.ohrem.service.service.CarService;
 import my.ohrem.service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +28,23 @@ public class AddCarController {
     @PostMapping("/add-car.html")
     //@Secured("ADMIN")
     @SneakyThrows
-    public String addCar(@RequestParam("photo") MultipartFile file, CarEntity car) {
-        System.out.println("Call addCar: " + car);
+    public String addCar(@RequestParam("photo") MultipartFile file, AddCarRequest request) {
         System.out.println(file.getOriginalFilename() + ": " + file.getSize());
+
+        CarDescription carDescription = new CarDescription();
+        carDescription.setDescription(request.getDescription());
+
+        CarEntity car = CarEntity.builder()
+                .brand(request.getBrand())
+                .model(request.getModel())
+                .color(request.getColor())
+                .price(request.getPrice())
+                .carDescription(carDescription)
+                .isAvailable(true)
+                .build();
+
+        carDescription.setCar(car);
+
         carService.add(car, file.getBytes());
         return "redirect:/car-list.html";
     }

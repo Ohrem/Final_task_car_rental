@@ -44,22 +44,17 @@
                                     </button>
                                     <ul class="dropdown-menu" style="">
                                         <li>
-                                            <form method="POST">
-                                                <input type="hidden" name="user_id" value="${car.id}">
+                                            <form method="get" action="/hello/${car.id}/updateCarAdmin.html">
                                                 <input class="dropdown-item" type="submit" value="Update">
                                             </form>
                                         </li>
                                         <li>
-                                            <form method="POST">
-                                                <input type="hidden" name="command" value="delete_client_by_id">
-                                                <input type="hidden" name="user_id" value="${car.id}">
+                                            <form method="get" action="/hello/${car.id}/deleteCarAdmin.html">
                                                 <input class="dropdown-item" type="submit" value="Delete">
                                             </form>
                                         </li>
                                         <li>
-                                            <form method="POST">
-                                                <input type="hidden" name="command" value="to_client_deposits">
-                                                <input type="hidden" name="user_id" value="${car.id}">
+                                            <form method="get" action="/hello/${car.id}/viewCar.html">
                                                 <input class="dropdown-item" type="submit" value="View car">
                                             </form>
                                         </li>

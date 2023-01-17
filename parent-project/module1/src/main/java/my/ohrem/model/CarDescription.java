@@ -9,7 +9,9 @@ import javax.persistence.*;
 @Table(name = "car_description")
 @Getter
 @Setter
+@Builder
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class CarDescription {
     @Id
     @Column(name = "DESCRIPTION_ID")

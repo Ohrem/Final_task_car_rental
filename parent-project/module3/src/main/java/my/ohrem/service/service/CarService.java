@@ -55,4 +55,9 @@ public class CarService {
     public void update(CarEntity car) {
         carEntityDao.update(car);
     }
+
+    @Transactional
+    public void delete(long id) {
+        carEntityDao.delete(id);
+    }
 }
