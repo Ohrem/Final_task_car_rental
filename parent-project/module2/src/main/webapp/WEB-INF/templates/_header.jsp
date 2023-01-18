@@ -50,7 +50,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/hello/user-list.html">ADMIN User changes</a></li>
                         <li><a class="dropdown-item" href="/hello/car-list.html">ADMIN Car changes</a></li>
-                        <li><a class="dropdown-item" href="/hello/add-employee.html">ADMIN Order changes</a></li>
+                        <li><a class="dropdown-item" href="/hello/order-list.html">ADMIN Order changes</a></li>
                     </ul>
                 </li>
                 </security:authorize>

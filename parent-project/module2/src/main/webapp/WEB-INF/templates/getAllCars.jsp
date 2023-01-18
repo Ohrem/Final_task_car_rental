@@ -17,9 +17,6 @@
             <h1 style="padding: 0">All cars </h1>
         </div>
         <div class="row">
-            <form method="get" action="/hello/add-car.html">
-                <input class="dropdown-item" type="submit" value="Add car">
-            </form>
             <table class="table table-light table-bordered align-middle table table-striped"
                    style="background-color: #d1e7dd">
                 <thead>

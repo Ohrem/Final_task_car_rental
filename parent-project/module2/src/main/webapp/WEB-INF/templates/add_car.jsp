@@ -39,7 +39,7 @@
                  pattern="^([A-Za-z]{1,10})$" required/>
         </div>
         <div class="col-8">
-          <label for="inputPrice" class="form-label">Price per hour ($)</label>
+          <label for="inputPrice" class="form-label">Price per day ($)</label>
           <input name="price" type="number" class="form-control" id="inputPrice"
                                      pattern="^[0-9\.]"
                  title="Must contain num and ."
@@ -52,6 +52,10 @@
         <div class="col-2">
           <label for="inputRadio" class="form-label">Not available</label>
           <input name="isAvailable" type="radio" class="form-control" value="false" id="inputRadio"/>
+        </div>
+        <div class="col-12">
+          <label for="inputDescription" class="form-label">Car description</label>
+          <input name="description" type="text" class="form-control" id="inputDescription" placeholder="description" required>
         </div>
         <div class="col-12">
           <button type="submit" class="btn btn-primary" style="width: 100%">Submit</button>

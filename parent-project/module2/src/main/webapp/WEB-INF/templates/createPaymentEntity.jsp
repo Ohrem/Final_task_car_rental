@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>CreateOrder</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
@@ -12,34 +11,41 @@
     <header>
         <jsp:include page="_header.jsp"/>
     </header>
-    <main class="main">
-        <div class="card" style="width: 35rem; margin-left: 170px; margin-top: 15px;">
-            <div class="card-content">
-                <p>Please fill in the payment date</p>
+    <div class="container">
+        <div class="col-md-6 mx-auto">
+            <div class="row" style="margin: 20px 0 0">
+                <h1 style="padding: 0">
+                    Filling in the date
+                </h1>
             </div>
-        </div>
-        <div class="container mt-5">
-            <div class="row">
-                <form class="col s12" method="post" action="/hello/paymentEntity.html">
-                    <div class="row">
-                        <div class="inputs">
-                            <div class="input-field col s6">
-                                <input type="date" id="payment-date" name="paymentDate" class="validate">
-                                <label for="payment-date">Payment date</label>
-                            </div>
+            <main class="main">
+                <div class="card bg-light mb-3" style="max-width: 30rem; margin: 20px 0 0">
+                    <div class="card-body">
+                        <h6 class="card-title">Rental procedure</h6>
+                        <p class="card-text">To continue rent, please, fill in the payment date.</p>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: -10px">
+                    <form class="row g-3 " action="/hello/paymentEntity.html" method="post" id="payment_form">
+                        <div class="col-10">
+                            <label for="inputPaymentDate" class="form-label">Payment date</label>
+                            <input name="paymentDate" type="date" class="form-control" id="inputPaymentDate" required>
                         </div>
-                    </div>
-                    <div class="d-flex mt-4 justify-content-between">
-                        <button class="write btn" type="submit">Next</button>
-                    </div>
-                </form>
-            </div>
+                        <div class="col-2"></div>
+                        <div class="col-6">
+                            <button class="btn btn-success btn-sm" type="submit" style="width: 100%">Next</button>
+                        </div>
+                        <div class="col-4">
+                            <form action="index.html">
+                                <input type="submit" value="Home" class="btn btn-primary btn-sm" style="width: 100%"/>
+                            </form>
+                        </div>
+                    </form>
+                </div>
+            </main>
         </div>
-        <main/>
-        <footer>
-            <jsp:include page="_footer.jsp"/>
-        </footer>
-    </main>
+    </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 </body>
 </html>

@@ -42,4 +42,5 @@ public class CarListController {
         CarEntity car = carService.getCarEntity(carId);
         return car.getCarPhoto().getPhoto();
     }
+
 }

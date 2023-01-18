@@ -57,46 +57,69 @@
                 </div>
             </div>
         </div>
-        <div class="card-container">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" style="width: 279px; height: 200px; margin-left: 3px;margin-top: 4px"
-                     src="https://www.rentacarkerala.in/wp-content/uploads/2018/10/best.jpg"
-                     alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Show cars</h5>
-                    <p class="card-text">Here you can see information about available cars. Pagination, in-page search
-                        and filtering implemented. </p>
-                    <a href="/hello/car-list.html" class="btn btn-primary">check cars</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" style="width: 279px; height: 200px; margin-left: 3px; margin-top: 4px"
-                     src="https://www.talk-business.co.uk/wp-content/uploads/2017/04/car-leasing.jpg"
-                     alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Rent a car</h5>
-                    <p class="card-text">By clicking on the link, register a car after going through 3 easy
-                        operations.</p>
-                    <a href="/hello/createOrder.html" class="btn btn-primary">Go rent a car</a>
-                </div>
-            </div>
-
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" style="width: 279px; height: 200px; margin-left: 3px;margin-top: 4px"
-                     src="https://millionmilesecrets.com/wp-content/uploads/shutterstock_394789348.jpg"
-                     alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Order result info</h5>
-                    <p class="card-text">View information about the rental application, car,remaining amount, remaining
-                        time.</p>
-                    <a href="/hello/userResultInfo.html" class="btn btn-primary">check Result</a>
+        <div class="container" style="margin-top: 30px; margin-bottom: 50px">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <img src="https://www.rentacarkerala.in/wp-content/uploads/2018/10/best.jpg"
+                                 class="card-img-top"
+                                 alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Show cars</h5>
+                                <p class="card-text"> Here you can see information about available cars. Pagination,
+                                    in-page search and filtering implemented.</p>
+                                <div class="d-grid gap-2 d-md-block">
+                                    <a href="/hello/car-list.html" class="btn btn-primary">Click here</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <img src="https://www.talk-business.co.uk/wp-content/uploads/2017/04/car-leasing.jpg"
+                                 class="card-img-top"
+                                 alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Rent a car</h5>
+                                <p class="card-text">By clicking on the link, register a car after going through 3 easy
+                                    operations.</p>
+                                </br>
+                                <div class="d-grid gap-2 d-md-block">
+                                    <a href="/hello/createOrder.html" class="btn btn-primary">Go rent a car</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <img src="${pageContext.request.contextPath}/resources/imgs/3_index.webp"
+                                 class="card-img-top"
+                                 alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Order status</h5>
+                                <p class="card-text">View information about the rental application, car,remaining
+                                    amount, remaining time.</p>
+                                <div class="d-grid gap-2 d-md-block">
+                                    <a href="/hello/userResultInfo.html" class="btn btn-primary">Check Result</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <hr style="border: 2px solid #001e42;">
         <table style="  width:100%" class="table">
             <tr>
                 <th>Available Cars</th>
+            </tr>
+            <tr style="font-family: Serif; font-weight: bold">
+                <td><p>Brand</p></td>
+                <td><p>Model</p></td>
+                <td><p>Color</p></td>
+                <td><p>Color</p></td>
+                <td><p>About car</p></td>
+                <td><p>Click for rent</p></td>
             </tr>
             <c:forEach items="${cars}" var="car">
                 <tr>

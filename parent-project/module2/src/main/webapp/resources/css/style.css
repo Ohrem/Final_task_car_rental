@@ -13,17 +13,16 @@ body, html {
     flex: 1 1 auto;
 }
 
-.card-container{
+.card-container {
     display: flex;
     flex-direction: row;
     margin: 0 350px;
 }
-.card{
+
+.card {
     margin: 0 20px;
 }
-element.style{
-    background-color: white;
-}
+
 
 
 

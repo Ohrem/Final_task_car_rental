@@ -16,9 +16,6 @@
         <div class="row" style="margin: 50px 0">
             <h1 style="padding: 0">All registered users </h1>
         </div>
-        <form method="get" action="/hello/add-user.html">
-            <input class="dropdown-item" type="submit" value="Add user">
-        </form>
         <div class="row">
             <table class="table table-light table-bordered align-middle table table-striped"
                    style="background-color: #d1e7dd">
@@ -73,6 +70,9 @@
                 </tbody>
             </table>
         </div>
+        <form action="index.html">
+            <input type="submit" value="Home" class="btn btn-primary btn-sm" style="width: 20%"/>
+        </form>
     </div>
 
 </div>

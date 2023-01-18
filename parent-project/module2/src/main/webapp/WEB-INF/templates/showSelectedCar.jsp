@@ -1,24 +1,50 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: evgeniy.hozhaynov
-  Date: 17.01.2023
-  Time: 21:09
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <html>
 <head>
-    <title>Title</title>
+    <title>Show selected car</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 </head>
 <body>
-  Brand: ${brand}
-  Model: ${model}
-  Color: ${color}
-  Price: ${price}
-  Description: ${description}
-  Photo: <image src="/hello/image/${carId}/carPhoto.jpg" class="img-car"
-          style="width: 120px; height: 80px"></image>
+<div class="wrapper">
+    <header>
+        <jsp:include page="_header.jsp"/>
+    </header>
+    <div class="container">
+        <div class="col-md-6 mx-auto">
+            <main class="main">
+                <div class="card bg-light mb-3" style="max-width: 60rem; margin: 10px 0 0">
+                    <div class="card-body">
+                        <h3 class="card-title">Information about the selected car</h3>
+                        <hr style="width: 100%; color: #00133a">
+                        <h5 class="card-text">Brand: ${brand}</h5>
+                        <hr style="width: 100%; color: #00133a">
+                        <h5 class="card-text">Model: ${model}</h5>
+                        <hr style="width: 100%; color: #00133a">
+                        <h5 class="card-text">Color: ${color}</h5>
+                        <hr style="width: 100%; color: #00133a">
+                        <h5 class="card-text">Price: ${price}</h5>
+                        <hr style="width: 100%; color: #00133a">
+                        <h5 class="card-text">Description:</h5>
+                        <h6 class="card-text">${description}</h6>
+                        <hr style="width: 100%; color: #00133a">
+                        <p class="card-text">
+                                <image src="/hello/image/${car.id}/carPhoto.jpg" class="img-car"
+                                       style="width: 280px; height: 200px"></image>
+                        </p>
+                        <hr style="width: 100%; color: #494533">
+                        <p class="card-text">
+                        <form action="index.html">
+                            <input type="submit" value="Back" class="btn btn-success btn-sm" style="width: 100%"/>
+                        </form>
+                        </p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
 </body>
 </html>
