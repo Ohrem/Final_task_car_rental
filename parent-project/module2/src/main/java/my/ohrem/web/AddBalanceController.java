@@ -38,4 +38,5 @@ public class AddBalanceController {
 
         return "redirect:/userResultInfo.html";
     }
+
 }

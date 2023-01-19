@@ -32,13 +32,8 @@
                             <input name="paymentDate" type="date" class="form-control" id="inputPaymentDate" required>
                         </div>
                         <div class="col-2"></div>
-                        <div class="col-6">
+                        <div class="col-10">
                             <button class="btn btn-success btn-sm" type="submit" style="width: 100%">Next</button>
-                        </div>
-                        <div class="col-4">
-                            <form action="index.html">
-                                <input type="submit" value="Home" class="btn btn-primary btn-sm" style="width: 100%"/>
-                            </form>
                         </div>
                     </form>
                 </div>

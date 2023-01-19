@@ -35,7 +35,7 @@
                         <td><c:out value="${car.price}"/></td>
                         <td>
                             <image src="/hello/image/${car.id}/carPhoto.jpg" class="img-car"
-                                   style="width: 120px; height: 80px"></image>
+                                   style="width: 150px; height: 80px"></image>
                         </td>
                         <td>
                             <div class="btn-group dropend">

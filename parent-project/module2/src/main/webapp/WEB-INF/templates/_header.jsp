@@ -54,7 +54,16 @@
                     </ul>
                 </li>
                 </security:authorize>
+                <li class="nav-item dropdown" style="background-color: #ffdede">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false" style="font-family: 'Roboto Thin'">
+                        Balance: ${userBalance}
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/hello/addBalance.html">Add balance</a></li>
+                    </ul>
                 </li>
+
             </ul>
             <img src="${pageContext.request.contextPath}/resources/imgs/user_icon_150670.png" alt="" width="25"
                  height="25"/>

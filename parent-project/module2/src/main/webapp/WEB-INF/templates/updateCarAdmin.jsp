@@ -40,7 +40,7 @@
                            pattern="^([A-Za-z]{1,10})$" required/>
                 </div>
                 <div class="col-8">
-                    <label for="inputPrice" class="form-label">Price per hour ($)</label>
+                    <label for="inputPrice" class="form-label">Price per day ($)</label>
                     <input name="price" type="number" class="form-control" id="inputPrice"
                            pattern="^[0-9\.]"
                            title="Must contain num and ."

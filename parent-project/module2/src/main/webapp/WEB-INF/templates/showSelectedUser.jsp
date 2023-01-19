@@ -30,7 +30,7 @@
                         <hr style="width: 100%; color: #494533">
                         <h5 class="card-text">Balance: ${balance}</h5>
                         <hr style="width: 100%; color: #494533">
-                        <p class="card-text"><image src="/hello/image/${user.id}/userPhoto.jpg" class="img-car"
+                        <p class="card-text"><image src="/hello/image/${userId}/userPhoto.jpg" class="img-car"
                                                     style="width: 200px; height: 200px"></image>
                         </p>
                         <hr style="width: 100%; color: #494533">

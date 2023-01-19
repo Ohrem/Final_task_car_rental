@@ -31,8 +31,8 @@
                         <h6 class="card-text">${description}</h6>
                         <hr style="width: 100%; color: #00133a">
                         <p class="card-text">
-                                <image src="/hello/image/${car.id}/carPhoto.jpg" class="img-car"
-                                       style="width: 280px; height: 200px"></image>
+                                <image src="/hello/image/${carId}/carPhoto.jpg" class="img-car"
+                                       style="width: 300px; height: 180px"></image>
                         </p>
                         <hr style="width: 100%; color: #494533">
                         <p class="card-text">
