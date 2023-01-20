@@ -9,7 +9,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController {
-
     @Autowired
     private CarService carService;
 
@@ -24,6 +23,7 @@ public class HomeController {
 
         if(user != null) {
             modelAndView.addObject("loggedUser", user.getRole().toString());
+            modelAndView.addObject("balance", user.getBalance());
         }
 
         modelAndView.addObject("cars", carService.getAllAvailable());
@@ -31,5 +31,4 @@ public class HomeController {
         System.out.println("Call homePage");
         return modelAndView;
     }
-
 }

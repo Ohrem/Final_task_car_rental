@@ -66,15 +66,7 @@
             );
         </sql>
     </changeSet>
-    <changeSet id="5" author="a.veramkovich@gmail.com">
-        <sql>
-            CREATE TABLE IF NOT EXISTS t_order_seq (
-                next_val INT UNSIGNED PRIMARY KEY NOT NULL
-            );
-            INSERT INTO t_order_seq VALUES (0);
-        </sql>
-    </changeSet>
-    <changeSet id="6" author="ohrem25032002@gmail.com">
+    <changeSet id="5" author="ohrem25032002@gmail.com">
         <sql>
             CREATE TABLE IF NOT EXISTS `user_photo`
             (
@@ -89,7 +81,7 @@
                 );
         </sql>
     </changeSet>
-    <changeSet id="7" author="ohrem25032002@gmail.com">
+    <changeSet id="6" author="ohrem25032002@gmail.com">
         <sql>
             CREATE TABLE IF NOT EXISTS `car_photo`
             (
@@ -104,7 +96,7 @@
                 );
         </sql>
     </changeSet>
-    <changeSet id="8" author="ohrem25032002@gmail.com">
+    <changeSet id="7" author="ohrem25032002@gmail.com">
         <sql>
             CREATE TABLE IF NOT EXISTS `car_description`
             (
@@ -119,7 +111,7 @@
                 );
         </sql>
     </changeSet>
-    <changeSet id="9" author="ohrem25032002@gmail.com">
+    <changeSet id="8" author="ohrem25032002@gmail.com">
         <sql>
             INSERT INTO app_user VALUES (
               '1',
@@ -133,7 +125,7 @@
          );
         </sql>
     </changeSet>
-    <changeSet id="10" author="ohrem25032002@gmail.com">
+    <changeSet id="9" author="ohrem25032002@gmail.com">
         <sql>
             INSERT INTO car VALUES (
                 '1',

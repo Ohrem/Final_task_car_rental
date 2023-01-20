@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class CarService {
-
     @Autowired
     private CarEntityDao carEntityDao;
 
@@ -55,6 +54,14 @@ public class CarService {
         return carEntityDao.readAll().stream()
                 .filter(car -> car.getIsAvailable().equals(true))
                 .collect(Collectors.toList());
+    }
+
+    public List<CarEntity> getAllAvailableWithPagination(Integer pageNumber, Integer pageAmount) {
+        return carEntityDao.readAllPageable(pageNumber, pageAmount);
+    }
+
+    public Long countAllAvailable() {
+        return carEntityDao.countAllAvailable();
     }
 
     public CarEntity getCarEntity(Long carId) {

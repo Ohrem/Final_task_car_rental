@@ -17,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 
+import static my.ohrem.util.ValidationUtil.isValidAddCarRequest;
+
 @Controller
 public class UpdateCarController {
 
@@ -41,6 +43,11 @@ public class UpdateCarController {
     public String updateCarPost(@RequestParam("photo") MultipartFile file, UpdateCarRequest request) throws IOException {
         CarEntity car = carService.getCarEntity(request.getCarId());
         CarDescription carDescription;
+
+        System.out.println("UPDATECARREQUEST: " + request);
+
+        if(!isValidAddCarRequest(request))
+            return "redirect:/addCarError.html";
 
         if (car.getCarDescription() == null) {
             carDescription = CarDescription.builder()
@@ -67,7 +74,7 @@ public class UpdateCarController {
         carService.update(car);
         carDescriptionDao.update(carDescription);
 
-        return "redirect:/car-list.html";
+        return "redirect:/car-list.html?page=1";
     }
 
 }

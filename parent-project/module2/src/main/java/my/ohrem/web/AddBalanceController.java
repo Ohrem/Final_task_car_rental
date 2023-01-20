@@ -23,13 +23,21 @@ public class AddBalanceController {
     @GetMapping("/addBalance.html")
     @Secured({"ROLE_ADMIN", "ROLE_USER"})
     public ModelAndView addBalanceAccess() {
-        return new ModelAndView("addBalance");
+        UserEntity user = getUserService.getUserFromSecurityContextHolder();
+        ModelAndView modelAndView = new ModelAndView("addBalance");
+
+        modelAndView.addObject("balance", user.getBalance());
+
+        return modelAndView;
     }
 
     @PostMapping("/addBalance.html")
     @Secured({"ROLE_ADMIN", "ROLE_USER"})
     public String addBalance(AddBalanceRequest request) {
         UserEntity user = getUserService.getUserFromSecurityContextHolder();
+
+        if(request.getAddBalanceSum() == null || request.getAddBalanceSum() == 0)
+            return "redirect:/balanceError.html";
 
         if (request.getAddBalanceSum() > 0)
             user.setBalance(user.getBalance() + request.getAddBalanceSum());
@@ -38,5 +46,4 @@ public class AddBalanceController {
 
         return "redirect:/userResultInfo.html";
     }
-
 }

@@ -19,4 +19,8 @@ public interface UserEntityDao {
     List<UserEntity> findUserByEmail(String username);
 
     UserEntity findSingleUserByEmail(String username);
+
+    List<UserEntity> readAllPageable(Integer pageNumber, Integer pageAmount);
+
+    Long countAllAvailable();
 }

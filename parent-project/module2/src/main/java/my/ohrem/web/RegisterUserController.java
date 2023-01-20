@@ -1,39 +1,39 @@
 package my.ohrem.web;
 
-import lombok.SneakyThrows;
 import my.ohrem.model.UserEntity;
 import my.ohrem.model.UserRole;
-import my.ohrem.request.AddUserForAdminRequest;
+import my.ohrem.request.RegisterUserRequest;
 import my.ohrem.service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
-import static my.ohrem.util.ValidationUtil.isValidAdminAddUserRequest;
+import java.io.IOException;
+
 import static my.ohrem.util.ValidationUtil.isValidRegistrationRequest;
 
-
 @Controller
-public class AddUserController {
+public class RegisterUserController {
+
     @Autowired
     private UserService userService;
-    @GetMapping("/add-user.html")
-    @Secured("ROLE_ADMIN")
-    public String showEmployeeList() {
-        return "add_user";
+
+    @GetMapping("/register.html")
+    public ModelAndView getRegistrationPage() {
+        return new ModelAndView("registerUser");
     }
 
-    @PostMapping("/add-user.html")
-    @Secured("ROLE_ADMIN")
-    @SneakyThrows
-    public String addUser(@RequestParam("photo") MultipartFile file, AddUserForAdminRequest request) {
+    @PostMapping("/register.html")
+    public String postRegistrationPage(@RequestParam("photo") MultipartFile file, RegisterUserRequest request) throws IOException {
         System.out.println("Call addEployee: " + request);
         System.out.println(file.getOriginalFilename() + ": " + file.getSize());
 
-        if(!isValidAdminAddUserRequest(request) || userService.findUserByEmail(request.getEmail()) != null)
-            return "redirect:/registrationError.html"; //TODO admin registration error
+        if(!isValidRegistrationRequest(request) || userService.findUserByEmail(request.getEmail()) != null)
+            return "redirect:/registrationError.html";
 
         UserEntity user = UserEntity.builder()
                 .name(request.getName())
@@ -47,6 +47,6 @@ public class AddUserController {
 
         userService.add(user, file.getBytes());
 
-        return "redirect:/user-list.html?page=1";
+        return "redirect:/login";
     }
 }

@@ -1,13 +1,10 @@
 package my.ohrem.servlet;
-
-
 import my.ohrem.config.DataConfig;
 import my.ohrem.security.WebSecurityConfig;
 import my.ohrem.service.config.ServiceContextConfig;
 import my.ohrem.web.WebConfiguration;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
-
 import javax.servlet.ServletContainerInitializer;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -24,7 +21,6 @@ public class ServletContainerInitializerImpl implements ServletContainerInitiali
         context.register(DataConfig.class);
         context.register(ServiceContextConfig.class);
         context.register(WebSecurityConfig.class);
-
         DispatcherServlet dispatcherServlet =
                 new DispatcherServlet(context);
 
@@ -35,5 +31,6 @@ public class ServletContainerInitializerImpl implements ServletContainerInitiali
         servletRegistration.addMapping("*.jpg");
         // *.view - GET
         // *.action - POST
+
     }
 }

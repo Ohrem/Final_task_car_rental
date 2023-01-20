@@ -16,4 +16,24 @@ public class ErrorController {
     public ModelAndView securityError() {
         return new ModelAndView("securityError");
     }
+
+    @GetMapping("/paymentError.html")
+    public ModelAndView paymentError() {
+        return new ModelAndView("paymentError");
+    }
+
+    @GetMapping("/registrationError.html")
+    public ModelAndView registrationError() {
+        return new ModelAndView("registrationError");
+    }
+
+    @GetMapping("/addCarError.html")
+    public ModelAndView addCarError() {
+        return new ModelAndView("addCarError");
+    }
+
+    @GetMapping("/balanceError.html")
+    public ModelAndView balanceError() {
+        return new ModelAndView("balanceError");
+    }
 }

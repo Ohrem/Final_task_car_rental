@@ -44,6 +44,37 @@
         </div>
     </div>
 </div>
+<form action="index.html">
+    <input type="submit" value="Home" class="btn btn-primary btn-sm" style="width: 20%"/>
+</form>
+
+<%--For displaying Previous link except for the 1st page --%>
+<c:if test="${currentPage != 1}">
+    <td><a href="car-list-user.html?page=${currentPage - 1}">Previous</a></td>
+</c:if>
+
+<%--For displaying Page numbers.
+The when condition does not display a link for the current page--%>
+<table>
+    <tr>
+        <c:forEach begin="1" end="${numberOfPages}" var="i">
+            <c:choose>
+                <c:when test="${currentPage eq i}">
+                    <td><c:out value="${i}"/></td>
+                </c:when>
+                <c:otherwise>
+                    <td><a href="car-list-user.html?page=${i}"><c:out value="${i}"/></a></td>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
+    </tr>
+</table>
+
+<%--For displaying Next link --%>
+<c:if test="${currentPage lt numberOfPages}">
+    <td><a href="car-list-user.html?page=${currentPage + 1}">Next</a></td>
+</c:if>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>

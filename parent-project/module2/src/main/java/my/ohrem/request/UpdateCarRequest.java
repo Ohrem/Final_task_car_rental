@@ -1,7 +1,9 @@
 package my.ohrem.request;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
+@ToString
 public class UpdateCarRequest {
     private Long carId;
     private String brand;

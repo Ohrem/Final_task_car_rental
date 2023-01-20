@@ -20,9 +20,10 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import static java.time.temporal.ChronoUnit.DAYS;
+
 @Controller
 public class CreateOrderController {
-
 
     @Autowired
     private UserService userService;
@@ -42,12 +43,28 @@ public class CreateOrderController {
     @Autowired
     private GetUserFromContextHolderService userGetFromContextHolderService;
 
+    @Autowired
+    private CreatePaymentEntityService paymentEntityService;
+
     @GetMapping("/createOrder.html")
     @Secured({"ROLE_ADMIN", "ROLE_USER"})
     public ModelAndView getCreateOrder() {
-        ModelAndView modelAndView = new ModelAndView("createOrder");
-        modelAndView.addObject("cars", carService.getAllAvailable());
+        UserEntity user = userGetFromContextHolderService.getUserFromSecurityContextHolder();
+        ModelAndView modelAndView;
 
+        if(user.getOrderEntity() == null) {
+            modelAndView = new ModelAndView("createOrder");
+            modelAndView.addObject("cars", carService.getAllAvailable());
+        } else {
+            modelAndView = new ModelAndView("userResultInfo");
+            modelAndView.addObject("paymentSum", paymentEntityService.countFinalSum(user.getOrderEntity()));
+            modelAndView.addObject("restPayment", user.getOrderEntity().getPaymentEntity().getPaymentSum());
+            modelAndView.addObject("orderCar", user.getOrderEntity().getCarEntity());
+            modelAndView.addObject("remainingDays", DAYS.between(user.getOrderEntity().getBeginDate(), user.getOrderEntity().getEndDate()));
+            modelAndView.addObject("userBalance", user.getBalance());
+            modelAndView.addObject("isPaid", user.getOrderEntity().getPaymentEntity().getIsPaid().toString());
+            modelAndView.addObject("comment", "You already have an active order");
+        }
         return modelAndView;
     }
 
@@ -81,10 +98,6 @@ public class CreateOrderController {
            || endDate.isAfter(LocalDate.now().plusYears(1))) {
             return new ModelAndView("dateError"); //TODO add dateError jsp page
         }
-
-//        if(request.getBeginDate() == null || request.getEndDate() == null || request.getCarId() == null) {
-//            return new ModelAndView("errorPage"); //TODO error page
-//        }
 
         if(user.getOrderEntity() != null){
             return new ModelAndView("index"); //TODO redirect to order delete page
@@ -140,7 +153,7 @@ public class CreateOrderController {
         PaymentEntity paymentEntity = user.getOrderEntity().getPaymentEntity();
 
         if(request.getCheckoutPayment() > paymentEntity.getPaymentSum()) {
-            return "redirect:/error.html"; //TODO create error page and add controller!!!!!
+            return "redirect:/paymentError.html"; //TODO create error page and add controller!!!!!
         }
 
         if(user.getBalance() - request.getCheckoutPayment() <= 0) {
@@ -154,12 +167,11 @@ public class CreateOrderController {
             paymentEntity.setIsPaid(true);
             userService.update(user);
             paymentService.update(paymentEntity);
-            return "redirect:/userResultInfo.html";
         }
 
         userService.update(user);
         paymentService.update(paymentEntity);
 
-        return "redirect:/index.html"; //TODO add redirect
+        return "redirect:/userResultInfo.html";
     }
 }

@@ -16,8 +16,11 @@ import java.time.LocalDate;
 public class OrderEntity implements BaseEntity<Long> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_seq")
-    @SequenceGenerator(name = "order_seq", sequenceName = "t_order_seq")
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(
+            name = "increment",
+            strategy = "org.hibernate.id.IncrementGenerator"
+    )
     private Long id;
 
     @Column(name = "begin_date")
@@ -39,6 +42,5 @@ public class OrderEntity implements BaseEntity<Long> {
     @OneToOne
     @JoinColumn(name = "payment_id")
     private PaymentEntity paymentEntity;
-
 
 }

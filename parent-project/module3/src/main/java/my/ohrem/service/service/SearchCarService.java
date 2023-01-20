@@ -13,22 +13,22 @@ import java.util.stream.Collectors;
 
 public class SearchCarService {
 
-    private final CarEntityDao carInfo;
+    private final CarEntityDao carInfoDao;
 
     @Autowired
     @Qualifier("simpleHttpClient")
     private HttpClient httpClient;
 
     @Autowired
-    public SearchCarService(CarEntityDao carInfo) {
-        this.carInfo = carInfo;
+    public SearchCarService(CarEntityDao carInfoDao) {
+        this.carInfoDao = carInfoDao;
     }
 
     public List<CarEntity> search(String pattern) {
         if (pattern == null) {
             return Collections.emptyList();
         }
-        return carInfo.readAll().stream()
+        return carInfoDao.readAll().stream()
                 .filter(carInfo -> carInfo
                         .getBrand()
                         .toLowerCase()

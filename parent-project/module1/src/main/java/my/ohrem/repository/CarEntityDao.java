@@ -17,4 +17,8 @@ public interface CarEntityDao {
     void delete(CarEntity car);
 
     List<CarEntity> readAll();
+
+    List<CarEntity> readAllPageable(Integer page, Integer entryAmount);
+
+    Long countAllAvailable();
 }

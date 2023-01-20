@@ -44,20 +44,6 @@ public class UserController {
     @Autowired
     private CreatePaymentEntityService paymentEntityService;
 
-//    @GetMapping("/getAllUsers.html")
-////    @Secured("ADMIN")
-//    public ModelAndView getAllUsers() {
-//        return new ModelAndView("getAllUsers",
-//                Map.of("users", userService.getAll()));
-//    }
-
-    @GetMapping("/getAllCars.html")
-    @Secured({"ROLE_ADMIN", "ROLE_USER"})
-    public ModelAndView getAllCars() {
-        return new ModelAndView("getAllCars",
-                Map.of("cars", carService.getAllAvailable()));
-    }
-
     @GetMapping("/userResultInfo.html")
     @Secured({"ROLE_ADMIN", "ROLE_USER"})
     public ModelAndView getUserResultInfo() {

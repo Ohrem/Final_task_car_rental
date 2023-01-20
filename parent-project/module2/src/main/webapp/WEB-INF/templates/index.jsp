@@ -1,5 +1,6 @@
 <!doctype html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -69,9 +70,19 @@
                                 <h5 class="card-title">Show cars</h5>
                                 <p class="card-text"> Here you can see information about available cars. Pagination,
                                     in-page search and filtering implemented.</p>
-                                <div class="d-grid gap-2 d-md-block">
-                                    <a href="/hello/car-list.html" class="btn btn-primary">Click here</a>
-                                </div>
+
+                                <security:authorize access="hasRole('ADMIN')">
+                                    <div class="d-grid gap-2 d-md-block">
+                                        <a href="/hello/car-list.html" class="btn btn-primary">Click here</a>
+                                    </div>
+                                </security:authorize>
+
+                                <security:authorize access="hasRole('USER')">
+                                    <div class="d-grid gap-2 d-md-block">
+                                        <a href="/hello/car-list-user.html" class="btn btn-primary">Click here</a>
+                                    </div>
+                                </security:authorize>
+
                             </div>
                         </div>
                     </div>

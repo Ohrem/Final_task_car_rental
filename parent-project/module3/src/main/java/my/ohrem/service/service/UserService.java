@@ -1,5 +1,6 @@
 package my.ohrem.service.service;
 
+import my.ohrem.model.CarEntity;
 import my.ohrem.model.UserEntity;
 import my.ohrem.model.UserPhoto;
 import my.ohrem.repository.UserEntityDao;
@@ -41,6 +42,18 @@ public class UserService {
 
     public void delete(long id) { //TODO check
         userEntityDao.delete(userEntityDao.findById(id));
+    }
+
+    public List<UserEntity> getAllAvailableWithPagination(Integer pageNumber, Integer pageAmount) {
+        return userEntityDao.readAllPageable(pageNumber, pageAmount);
+    }
+
+    public UserEntity findUserByEmail(String email) {
+        return userEntityDao.findSingleUserByEmail(email);
+    }
+
+    public Long countAllAvailable() {
+        return userEntityDao.countAllAvailable();
     }
 
 }

@@ -25,6 +25,8 @@
             <h5 class="card-text">Remaining days: ${remainingDays}</h5>
             <hr style="width: 100%; color: #494533">
             <h5 class="card-text">Rest of payment: ${restPayment}</h5>
+            <hr style="width: 100%; color: #494533">
+            <h5 class="card-text" style="color: red">${comment}</h5>
             <p class="card-text">
             <form action="processPayment.html">
               <input type="submit" value="To pay" class="btn btn-primary"/>

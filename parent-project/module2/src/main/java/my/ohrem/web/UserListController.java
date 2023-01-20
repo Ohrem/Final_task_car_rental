@@ -2,11 +2,13 @@ package my.ohrem.web;
 import my.ohrem.model.UserEntity;
 
 import my.ohrem.service.service.UserService;
+import my.ohrem.util.PaginationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,13 +19,13 @@ public class UserListController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private PaginationUtil paginationUtil;
+
     @GetMapping("/user-list.html")
     @Secured("ROLE_ADMIN")
-    public ModelAndView showEmployeeList() {
-        return new ModelAndView(
-                "getAllUsers",
-                Map.of("users", userService.getAll())
-        );
+    public ModelAndView showEmployeeList(@RequestParam("page") Integer pageNumber) {
+        return paginationUtil.createPaginationForUserList(pageNumber, "getAllUsers");
     }
 
     @ResponseBody

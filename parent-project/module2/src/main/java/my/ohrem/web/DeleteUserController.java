@@ -19,6 +19,6 @@ public class DeleteUserController {
     public String deleteUser(@PathVariable("user_id") long id) {
         userService.delete(id);
 
-        return "redirect:/user-list.html";
+        return "redirect:/user-list.html?page=1";
     }
 }

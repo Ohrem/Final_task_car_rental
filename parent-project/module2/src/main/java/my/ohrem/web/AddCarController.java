@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import static my.ohrem.util.ValidationUtil.isValidAddCarRequest;
+
 @Controller
 public class AddCarController {
     @Autowired
@@ -33,6 +35,9 @@ public class AddCarController {
         CarDescription carDescription = new CarDescription();
         carDescription.setDescription(request.getDescription());
 
+        if(!isValidAddCarRequest(request))
+            return "redirect:/addCarError.html";
+
         CarEntity car = CarEntity.builder()
                 .brand(request.getBrand())
                 .model(request.getModel())
@@ -45,6 +50,6 @@ public class AddCarController {
         carDescription.setCar(car);
 
         carService.add(car, file.getBytes());
-        return "redirect:/car-list.html";
+        return "redirect:/car-list.html?page=1";
     }
 }

@@ -18,6 +18,6 @@ public class DeleteCarController {
     public String deleteCarAdmin(@PathVariable("car.id") long id) {
         carService.delete(id);
 
-        return "redirect:/car-list.html";
+        return "redirect:/car-list.html?page=1";
     }
 }

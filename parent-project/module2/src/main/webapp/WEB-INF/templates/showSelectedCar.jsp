@@ -31,12 +31,12 @@
                         <h6 class="card-text">${description}</h6>
                         <hr style="width: 100%; color: #00133a">
                         <p class="card-text">
-                                <image src="/hello/image/${carId}/carPhoto.jpg" class="img-car"
-                                       style="width: 300px; height: 180px"></image>
+                            <image src="/hello/image/${carId}/carPhoto.jpg" class="img-car"
+                                   style="width: 300px; height: 180px"></image>
                         </p>
                         <hr style="width: 100%; color: #494533">
                         <p class="card-text">
-                        <form action="index.html">
+                        <form action="/hello/index.html" method="get">
                             <input type="submit" value="Back" class="btn btn-success btn-sm" style="width: 100%"/>
                         </form>
                         </p>

@@ -1,11 +1,14 @@
 package my.ohrem.repository;
 
 import my.ohrem.model.UserEntity;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @Repository
@@ -55,5 +58,22 @@ public class UserEntityDaoImpl implements UserEntityDao {
                 .createQuery("from UserEntity user where user.email=:email", UserEntity.class)
                 .setParameter("email", email)
                 .uniqueResult();
+    }
+
+    @Override
+    public List<UserEntity> readAllPageable(Integer page, Integer entryAmount) {
+        Session currentSession = sessionFactory.getCurrentSession();
+
+        Query<UserEntity> userEntityQuery = currentSession.createQuery("from UserEntity", UserEntity.class);
+        userEntityQuery.setFirstResult((page - 1) * entryAmount);
+        userEntityQuery.setMaxResults(entryAmount);
+
+        return userEntityQuery.list();
+    }
+
+    @Override
+    public Long countAllAvailable() {
+        Query query = sessionFactory.getCurrentSession().createSQLQuery("select count(*) from app_user");
+        return  ((BigInteger) query.uniqueResult()).longValue();
     }
 }

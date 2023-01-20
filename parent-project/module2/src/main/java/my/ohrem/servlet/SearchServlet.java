@@ -1,5 +1,4 @@
 package my.ohrem.servlet;
-
 import my.ohrem.model.CarEntity;
 import my.ohrem.repository.CarEntityDaoImpl;
 import my.ohrem.service.service.SearchCarService;
@@ -14,7 +13,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(name = "SearchServlet", urlPatterns = "/search.do")
-public class SearchCarServlet extends HttpServlet {
+public class SearchServlet extends HttpServlet {
 
     private SearchCarService searchService;
 
@@ -27,9 +26,9 @@ public class SearchCarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // Read input from HTTP request
-        final String cname = req.getParameter("cname");
+        final String pname = req.getParameter("pname");
         // Handle input data with business service
-        final List<CarEntity> searchResult = searchService.search(cname);
+        final List<CarEntity> searchResult = searchService.search(pname);
         // Save output for view/UI (JSP)
         req.setAttribute("searchResult", searchResult);
         getServletContext().getRequestDispatcher("/jsp/searchResult.jsp")
@@ -39,5 +38,4 @@ public class SearchCarServlet extends HttpServlet {
     public void setSearchService(SearchCarService searchService) {
         this.searchService = searchService;
     }
-
 }
