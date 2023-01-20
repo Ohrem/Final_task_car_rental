@@ -23,6 +23,13 @@ body, html {
     margin: 0 20px;
 }
 
+.pagination{
+    margin-left: 47%;
+}
+.previous{
+    margin-right: 20px;
+}
+
 
 
 

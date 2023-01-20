@@ -113,28 +113,34 @@
     </changeSet>
     <changeSet id="8" author="ohrem25032002@gmail.com">
         <sql>
-            INSERT INTO app_user VALUES (
-              '1',
-              'Roman',
-              'Ohremchuk',
-              'ohrem25032002@gmail.com',
-              '{noop}root',
-              '+375447714261',
-              'ADMIN',
-              '160.12'
-         );
+            INSERT INTO app_user
+            VALUES ( '1', 'Roman', 'Ohremchuk', 'ohrem25032002@gmail.com', '{noop}root', '+375447714261','ADMIN', '999.99'),
+                   ( '2', 'Eugene', 'Khozhainov', 'zheka1114@gmail.com', '{noop}root', '+375334121344','ADMIN', '300.12'),
+                   ( '3', 'Alex', 'Petrov', 'alex-petrov@gmail.com', '{noop}1111', '+375447732456','USER', '50.99'),
+                   ( '4', 'Vika', 'Demeshkevich', 'vika10@gmail.com', '{noop}1111', '+375293334261','USER', '12.60'),
+                   ( '5', 'Timoha', 'Liskoveqka', 'timoha@gmail.com', '{noop}1111', '+375332134123','ADMIN', '250'),
+                   ( '6', 'Anton', 'Prokop', 'prokop@gmail.com', '{noop}1111', '+375441255567','USER', '250'),
+                   ( '7', 'Yaroslav', 'Petrovskiy', 'kuro@mail.ru', '{noop}1111', '+375332134123','USER', '120.99'),
+                   ( '8', 'Danila', 'Radkevich', 'radanon@gmail.com', '{noop}1111', '+375331112345','USER', '400.12'),
+                   ( '9', 'Anton', 'Lukinoff', 'lukinoff@gmail.com', '{noop}root', '+375331432435','ADMIN', '999.99'),
+                   ( '10', 'Egor', 'Ohremchuk', 'milik24012006@gmail.com', '{noop}brother', '+375441234567','USER', '15.42'),
+                   ( '11', 'Iryna', 'Ohremchuk', 'iryna@mail.ru', '{noop}1111', '+375447714251','USER', '999.99');
         </sql>
     </changeSet>
     <changeSet id="9" author="ohrem25032002@gmail.com">
         <sql>
-            INSERT INTO car VALUES (
-                '1',
-                'BMW',
-                'M3',
-                'black',
-                '15',
-                 true
-                                    );
+            INSERT INTO car
+            VALUES ('1', 'BMW', 'M3', 'black', '30', true),
+                   ('2', 'AUDI', 'E-TRON GT', 'black', '40', true),
+                   ('3', 'VOLVO', 'V40', 'blue', '25', true),
+                   ('4', 'Mercedes', 'GLE coupe', 'dark blue', '55', true),
+                   ('5', 'Kia', 'Sportage', 'white', '15', true),
+                   ('6', 'Volkswagen', 'Passat B5', 'red', '15', true),
+                   ('7', 'Chevrolet', 'Camaro', 'blue', '60', true),
+                   ('8', 'BMW', 'D320', 'black', '30', true),
+                   ('9', 'Hyundai', 'Elantra', 'white', '55', true),
+                   ('10', 'Zhiguli', 'zhiga', 'white', '5', true),
+                   ('11', 'Lamborghini', 'Aventador', 'green', '150', true);
         </sql>
     </changeSet>
 </databaseChangeLog>

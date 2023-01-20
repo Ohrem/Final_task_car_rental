@@ -40,11 +40,16 @@
                     </security:authorize>
                     <security:authorize access="!isAuthenticated()">
                     <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
+                    </security:authorize>
+                </li>
+                <li class="nav-item dropdown">
+                    <security:authorize access="!isAuthenticated()">
                     <a class="nav-link" href="/hello/register.html">Register</a>
                     </security:authorize>
                     <security:authorize access="hasRole('USER')">
                     <a class="nav-link" href="/hello/myProfile.html">My profile</a>
                     </security:authorize>
+                </li>
                     <security:authorize access="hasRole('ADMIN')">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"

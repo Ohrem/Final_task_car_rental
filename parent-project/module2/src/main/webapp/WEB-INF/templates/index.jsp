@@ -73,16 +73,20 @@
 
                                 <security:authorize access="hasRole('ADMIN')">
                                     <div class="d-grid gap-2 d-md-block">
-                                        <a href="/hello/car-list.html" class="btn btn-primary">Click here</a>
+                                        <a href="/hello/car-list.html?page=1" class="btn btn-primary">Click here</a>
                                     </div>
                                 </security:authorize>
 
                                 <security:authorize access="hasRole('USER')">
                                     <div class="d-grid gap-2 d-md-block">
-                                        <a href="/hello/car-list-user.html" class="btn btn-primary">Click here</a>
+                                        <a href="/hello/car-list-user.html?page=1" class="btn btn-primary">Click here</a>
                                     </div>
                                 </security:authorize>
-
+                                <security:authorize access="hasRole('ANONYMOUS')">
+                                    <div class="d-grid gap-2 d-md-block">
+                                        <a href="/hello/car-list-user.html?page=1" class="btn btn-primary">Click here</a>
+                                    </div>
+                                </security:authorize>
                             </div>
                         </div>
                     </div>
@@ -120,31 +124,34 @@
                 </div>
             </div>
         </div>
-        <table style="  width:100%" class="table">
-            <tr>
-                <th>Available Cars</th>
-            </tr>
-            <tr style="font-family: Serif; font-weight: bold">
-                <td><p>Brand</p></td>
-                <td><p>Model</p></td>
-                <td><p>Color</p></td>
-                <td><p>Color</p></td>
-                <td><p>About car</p></td>
-                <td><p>Click for rent</p></td>
-            </tr>
-            <c:forEach items="${cars}" var="car">
-                <tr>
-                    <td><c:out value="${car.brand}"/></td>
-                    <td><c:out value="${car.model}"/></td>
-                    <td><c:out value="${car.color}"/></td>
-                    <td><c:out value="${car.price}"/></td>
-                    <td><a href="${car.id}/viewCar.html" class="btn btn-light btn-sm active" role="button"
-                           aria-pressed="true">About the car</a></td>
-                    <td><a href="createOrder.html" class="btn btn-primary btn-sm active" role="button"
-                           aria-pressed="true">Rent car</a></td>
-                </tr>
-            </c:forEach>
-        </table>
+        <div style="margin-top: 50px">
+
+        </div>
+<%--        <table style="  width:100%" class="table">--%>
+<%--            <tr>--%>
+<%--                <th>Available Cars</th>--%>
+<%--            </tr>--%>
+<%--            <tr style="font-family: Serif; font-weight: bold">--%>
+<%--                <td><p>Brand</p></td>--%>
+<%--                <td><p>Model</p></td>--%>
+<%--                <td><p>Color</p></td>--%>
+<%--                <td><p>Price per day</p></td>--%>
+<%--                <td><p>About car</p></td>--%>
+<%--                <td><p>Click for rent</p></td>--%>
+<%--            </tr>--%>
+<%--            <c:forEach items="${cars}" var="car">--%>
+<%--                <tr>--%>
+<%--                    <td><c:out value="${car.brand}"/></td>--%>
+<%--                    <td><c:out value="${car.model}"/></td>--%>
+<%--                    <td><c:out value="${car.color}"/></td>--%>
+<%--                    <td><c:out value="${car.price}"/></td>--%>
+<%--                    <td><a href="${car.id}/viewCar.html" class="btn btn-light btn-sm active" role="button"--%>
+<%--                           aria-pressed="true">About the car</a></td>--%>
+<%--                    <td><a href="createOrder.html" class="btn btn-primary btn-sm active" role="button"--%>
+<%--                           aria-pressed="true">Rent car</a></td>--%>
+<%--                </tr>--%>
+<%--            </c:forEach>--%>
+<%--        </table>--%>
         <footer>
             <jsp:include page="_footer.jsp"/>
         </footer>
