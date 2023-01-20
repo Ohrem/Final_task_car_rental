@@ -113,7 +113,7 @@
                                  alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Order status</h5>
-                                <p class="card-text">View information about the rental application, car,remaining
+                                <p class="card-text">View information about the rental application, balance, rental car,remaining
                                     amount, remaining time.</p>
                                 <div class="d-grid gap-2 d-md-block">
                                     <a href="/hello/userResultInfo.html" class="btn btn-primary">Check Result</a>

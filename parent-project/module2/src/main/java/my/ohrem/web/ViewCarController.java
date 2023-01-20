@@ -16,7 +16,6 @@ public class ViewCarController {
     private CarService carService;
 
     @GetMapping("/{car.id}/viewCar.html")
-    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     public ModelAndView viewCar(@PathVariable("car.id") long id) {
         ModelAndView modelAndView = new ModelAndView("showSelectedCar");
         CarEntity carEntity = carService.getCarEntity(id);

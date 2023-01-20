@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title>Show selected car</title>
@@ -35,11 +36,20 @@
                                    style="width: 300px; height: 180px"></image>
                         </p>
                         <hr style="width: 100%; color: #494533">
-                        <p class="card-text">
-                        <form action="/hello/createOrder.html" method="get">
-                            <input type="submit" value="Rent a car" class="btn btn-primary btn-sm active" style="width: 100%"/>
-                        </form>
-                        </p>
+                        <security:authorize access="hasRole('ADMIN')">
+                            <p class="card-text">
+                            <form action="/hello/${carId}/createOrderSelectedCar.html" method="get">
+                                <input type="submit" value="Rent a car" class="btn btn-primary btn-sm active" style="width: 100%"/>
+                            </form>
+                            </p>
+                        </security:authorize>
+                        <security:authorize access="hasRole('USER')">
+                            <p class="card-text">
+                            <form action="/hello/${carId}/createOrderSelectedCar.html" method="get">
+                                <input type="submit" value="Rent a car" class="btn btn-primary btn-sm active" style="width: 100%"/>
+                            </form>
+                            </p>
+                        </security:authorize>
                         <hr style="width: 100%; color: #494533">
                         <p class="card-text">
                         <form action="/hello/index.html" method="get">

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -52,10 +53,41 @@ public class CreateOrderController {
         UserEntity user = userGetFromContextHolderService.getUserFromSecurityContextHolder();
         ModelAndView modelAndView;
 
-        if(user.getOrderEntity() == null) {
+        if (user.getOrderEntity() == null) {
             modelAndView = new ModelAndView("createOrder");
             modelAndView.addObject("cars", carService.getAllAvailable());
         } else {
+            if (user.getOrderEntity().getPaymentEntity() == null) {
+                return new ModelAndView("createPaymentEntity");
+            }
+            modelAndView = new ModelAndView("userResultInfo");
+            modelAndView.addObject("paymentSum", paymentEntityService.countFinalSum(user.getOrderEntity()));
+            modelAndView.addObject("restPayment", user.getOrderEntity().getPaymentEntity().getPaymentSum());
+            modelAndView.addObject("orderCar", user.getOrderEntity().getCarEntity());
+            modelAndView.addObject("remainingDays", DAYS.between(user.getOrderEntity().getBeginDate(), user.getOrderEntity().getEndDate()));
+            modelAndView.addObject("userBalance", user.getBalance());
+            modelAndView.addObject("isPaid", user.getOrderEntity().getPaymentEntity().getIsPaid().toString());
+            modelAndView.addObject("comment", "You already have an active order");
+        }
+        return modelAndView;
+    }
+
+    @GetMapping("/{carId}/createOrderSelectedCar.html")
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
+    public ModelAndView getCreateOrderSelectedCar(@PathVariable("carId") long id) {
+        UserEntity user = userGetFromContextHolderService.getUserFromSecurityContextHolder();
+        ModelAndView modelAndView;
+
+        if (user.getOrderEntity() == null) {
+            modelAndView = new ModelAndView("createOrderSelectedCar");
+            CarEntity car = carService.getCarEntity(id);
+            if (car.getIsAvailable())
+                modelAndView.addObject("car", car);
+            else return new ModelAndView("carAvailableError");
+        } else {
+            if (user.getOrderEntity().getPaymentEntity() == null) {
+                return new ModelAndView("createPaymentEntity");
+            }
             modelAndView = new ModelAndView("userResultInfo");
             modelAndView.addObject("paymentSum", paymentEntityService.countFinalSum(user.getOrderEntity()));
             modelAndView.addObject("restPayment", user.getOrderEntity().getPaymentEntity().getPaymentSum());
@@ -93,13 +125,13 @@ public class CreateOrderController {
         LocalDate beginDate = LocalDate.parse(request.getBeginDate(), formatter);
         LocalDate endDate = LocalDate.parse(request.getEndDate(), formatter);
 
-        if(beginDate.isBefore(LocalDate.now())
-           || endDate.isBefore(beginDate)
-           || endDate.isAfter(LocalDate.now().plusYears(1))) {
+        if (beginDate.isBefore(LocalDate.now())
+            || endDate.isBefore(beginDate)
+            || endDate.isAfter(LocalDate.now().plusYears(1))) {
             return new ModelAndView("dateError"); //TODO add dateError jsp page
         }
 
-        if(user.getOrderEntity() != null){
+        if (user.getOrderEntity() != null) {
             return new ModelAndView("index"); //TODO redirect to order delete page
         }
 
@@ -130,8 +162,8 @@ public class CreateOrderController {
 
         LocalDate paymentDate = LocalDate.parse(request.getPaymentDate(), formatter);
 
-        if(paymentDate.isBefore(LocalDate.now())
-           || paymentDate.isAfter(user.getOrderEntity().getBeginDate())) {
+        if (paymentDate.isBefore(LocalDate.now())
+            || paymentDate.isAfter(user.getOrderEntity().getBeginDate())) {
             return "redirect:/dateError.html";
         }
 
@@ -152,18 +184,18 @@ public class CreateOrderController {
 
         PaymentEntity paymentEntity = user.getOrderEntity().getPaymentEntity();
 
-        if(request.getCheckoutPayment() > paymentEntity.getPaymentSum()) {
+        if (request.getCheckoutPayment() > paymentEntity.getPaymentSum()) {
             return "redirect:/paymentError.html"; //TODO create error page and add controller!!!!!
         }
 
-        if(user.getBalance() - request.getCheckoutPayment() <= 0) {
+        if (user.getBalance() - request.getCheckoutPayment() <= 0) {
             return "redirect:/addBalance.html"; //TODO add money to the balance service redirect
         }
 
         user.setBalance(user.getBalance() - request.getCheckoutPayment());
         paymentEntity.setPaymentSum(paymentEntity.getPaymentSum() - request.getCheckoutPayment());
 
-        if(paymentEntity.getPaymentSum() == 0) {
+        if (paymentEntity.getPaymentSum() == 0) {
             paymentEntity.setIsPaid(true);
             userService.update(user);
             paymentService.update(paymentEntity);

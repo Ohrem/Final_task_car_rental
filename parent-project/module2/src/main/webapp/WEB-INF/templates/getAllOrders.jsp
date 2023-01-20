@@ -74,7 +74,7 @@
 </div>
 <div class="pagination">
     <c:if test="${currentPage != 1}">
-        <td style="font-weight: bold; font-size: large; margin-right: 10px"><a
+        <td style="font-weight: bold; font-size: large; margin-right: 10px"><a class="previous"
                 href="order-list.html?page=${currentPage - 1}" style="color: mediumblue; font-size: large">Previous</a>
         </td>
     </c:if>
@@ -102,11 +102,12 @@
     </c:if>
 
 </div>
-<div class="back-home-util" style="width: 10%; margin-top: 10px; margin-left: 79%; margin-top: -22px">
+<div class="back-home-util" style="width: 10%; margin-top: 10px; margin-left: 79%; margin-top: -24px">
     <form action="index.html">
         <input type="submit" value="Home" class="btn btn-primary btn-sm" style="width: 100%"/>
     </form>
 </div>
+<hr style=" color:white">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>

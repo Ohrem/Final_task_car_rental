@@ -37,6 +37,9 @@ public class DataConfig {
         hibernateProperties.put("debug", debug);
         hibernateProperties.put("hibernate.dialect", dialect);
         hibernateProperties.put("hibernate.format_sql", format);
+        hibernateProperties.put("hibernate.connection.initial_pool_size", 10);
+        hibernateProperties.put("hibernate.connection.pool_size", 20);
+        hibernateProperties.put("hibernate.connection.pool_validation_interval", 1);
 
         return hibernateProperties;
     }

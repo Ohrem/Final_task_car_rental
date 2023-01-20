@@ -40,7 +40,8 @@ public class UserEntityDaoImplTest extends BaseDaoTest {
         public void create() {
             //Given
             Connection conn = testMysqlJdbcDataSource.getConnection();
-            conn.createStatement().executeUpdate("delete from app_user where id='1'");
+
+            conn.createStatement().executeUpdate("delete from app_user where id BETWEEN '1' AND '11'");
             ResultSet rs = conn.createStatement().executeQuery("select count(*) from app_user;");
             rs.next();
             int initialSize = rs.getInt(1);

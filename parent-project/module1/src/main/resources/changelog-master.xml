@@ -7,63 +7,63 @@
     <changeSet id="1" author="ohrem25032002@gmail.com">
         <sql>
             CREATE TABLE IF NOT EXISTS `car` (
-            `id` BIGINT(19) PRIMARY KEY NOT NULL,
-            `brand` VARCHAR(64) NOT NULL,
-            `model` VARCHAR(64) NOT NULL,
-            `color` VARCHAR(64) NOT NULL,
-            `price` DECIMAL NOT NULL,
-            `isAvailable` BIT(1)
-            );
+                `id` BIGINT(19) PRIMARY KEY NOT NULL,
+                `brand` VARCHAR(64) NOT NULL,
+                `model` VARCHAR(64) NOT NULL,
+                `color` VARCHAR(64) NOT NULL,
+                `price` DECIMAL NOT NULL,
+                `isAvailable` BIT(1)
+                );
         </sql>
     </changeSet>
     <changeSet id="2" author="ohrem25032002@gmail.com">
         <sql>
             CREATE TABLE IF NOT EXISTS `payment` (
-            `id` BIGINT(19),
-            `paymentDate` DATE NOT NULL,
-            `paymentSum` DECIMAL,
-            `isPaid` BIT(1),
-            PRIMARY KEY (`id`)
-            );
+                `id` BIGINT(19),
+                `paymentDate` DATE NOT NULL,
+                `paymentSum` DECIMAL,
+                `isPaid` BIT(1),
+                PRIMARY KEY (`id`)
+                );
         </sql>
     </changeSet>
     <changeSet id="3" author="ohrem25032002@gmail.com">
         <sql>
             CREATE TABLE IF NOT EXISTS `app_user` (
-             `id` BIGINT(19) PRIMARY KEY,
-             `name` VARCHAR(64) NOT NULL,
-             `surname` VARCHAR(64) NOT NULL,
-             `email` VARCHAR(64) UNIQUE NOT NULL,
-             `password` VARCHAR (64) NOT NULL,
-             `phone` VARCHAR(64) NOT NULL,
-             `role` VARCHAR(64) NOT NULL,
-             `balance` DECIMAL
+                `id` BIGINT(19) PRIMARY KEY,
+                `name` VARCHAR(64) NOT NULL,
+                `surname` VARCHAR(64) NOT NULL,
+                `email` VARCHAR(64) UNIQUE NOT NULL,
+                `password` VARCHAR (64) NOT NULL,
+                `phone` VARCHAR(64) NOT NULL,
+                `role` VARCHAR(64) NOT NULL,
+                `balance` DECIMAL
                 );
         </sql>
     </changeSet>
     <changeSet id="4" author="ohrem25032002@gmail.com">
         <sql>
             CREATE TABLE IF NOT EXISTS `orders` (
-            `id` BIGINT(19) PRIMARY KEY,
-            `car_id` BIGINT(19),
-            `payment_id` BIGINT(19),
-            `user_id` BIGINT(19),
-            `begin_date` DATE,
-            `end_date` DATE,
-            `message` VARCHAR(64),
-            CONSTRAINT `f_car_id` FOREIGN KEY (`car_id`)
+                `id` BIGINT(19) PRIMARY KEY,
+                `car_id` BIGINT(19),
+                `payment_id` BIGINT(19),
+                `user_id` BIGINT(19),
+                `begin_date` DATE,
+                `end_date` DATE,
+                `message` VARCHAR(64),
+                CONSTRAINT `f_car_id` FOREIGN KEY (`car_id`)
                 REFERENCES `car` (`id`)
-                 ON DELETE CASCADE
-                 ON UPDATE CASCADE,
-            CONSTRAINT `paymentId` FOREIGN KEY (`payment_id`)
+                ON DELETE CASCADE
+                ON UPDATE CASCADE,
+                CONSTRAINT `paymentId` FOREIGN KEY (`payment_id`)
                 REFERENCES `payment` (`id`)
-                 ON DELETE CASCADE
-                 ON UPDATE CASCADE,
-            CONSTRAINT `f_user_id` FOREIGN KEY (`user_id`)
+                ON DELETE CASCADE
+                ON UPDATE CASCADE,
+                CONSTRAINT `f_user_id` FOREIGN KEY (`user_id`)
                 REFERENCES `app_user` (`id`)
-                 ON DELETE CASCADE
-                 ON UPDATE CASCADE
-            );
+                ON DELETE CASCADE
+                ON UPDATE CASCADE
+                );
         </sql>
     </changeSet>
     <changeSet id="5" author="ohrem25032002@gmail.com">
@@ -113,9 +113,9 @@
     </changeSet>
     <changeSet id="8" author="ohrem25032002@gmail.com">
         <sql>
-            INSERT INTO app_user
+            INSERT INTO `app_user`
             VALUES ( '1', 'Roman', 'Ohremchuk', 'ohrem25032002@gmail.com', '{noop}root', '+375447714261','ADMIN', '999.99'),
-                   ( '2', 'Eugene', 'Khozhainov', 'zheka1114@gmail.com', '{noop}root', '+375334121344','ADMIN', '300.12'),
+                   ( '2', 'Eugene', 'Khozhainov', 'zheka1114@gmail.com', '{noop}root', '+375334121344','USER', '300.12'),
                    ( '3', 'Alex', 'Petrov', 'alex-petrov@gmail.com', '{noop}1111', '+375447732456','USER', '50.99'),
                    ( '4', 'Vika', 'Demeshkevich', 'vika10@gmail.com', '{noop}1111', '+375293334261','USER', '12.60'),
                    ( '5', 'Timoha', 'Liskoveqka', 'timoha@gmail.com', '{noop}1111', '+375332134123','ADMIN', '250'),
@@ -129,7 +129,7 @@
     </changeSet>
     <changeSet id="9" author="ohrem25032002@gmail.com">
         <sql>
-            INSERT INTO car
+            INSERT INTO `car`
             VALUES ('1', 'BMW', 'M3', 'black', '30', true),
                    ('2', 'AUDI', 'E-TRON GT', 'black', '40', true),
                    ('3', 'VOLVO', 'V40', 'blue', '25', true),
@@ -141,6 +141,24 @@
                    ('9', 'Hyundai', 'Elantra', 'white', '55', true),
                    ('10', 'Zhiguli', 'zhiga', 'white', '5', true),
                    ('11', 'Lamborghini', 'Aventador', 'green', '150', true);
+        </sql>
+    </changeSet>
+    <changeSet id="10" author="ohrem25032002@gmail.com">
+        <sql>
+            create table if not exists `rest`
+            (
+                `id`       integer primary key,
+                `name`     varchar(64) null,
+                `surname`  varchar(64) null,
+                `email`    varchar(64) null,
+                `password` varchar(64) null
+                );
+        </sql>
+    </changeSet>
+    <changeSet id="11" author="ohrem25032002@gmail.com">
+        <sql>
+            INSERT INTO `rest`
+            VALUES ( '1', 'Egor', 'Ohremchuk', 'egor-ohrem@gmail.com', '1111');
         </sql>
     </changeSet>
 </databaseChangeLog>

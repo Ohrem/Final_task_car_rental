@@ -27,7 +27,6 @@ public class CarListController {
     }
 
     @GetMapping("/car-list-user.html")
-    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     public ModelAndView showCarListForUsers(@RequestParam("page") Integer pageNumber) {
         return paginationUtil.createPaginationForCarList(pageNumber, "getAllCarsForUsers");
 

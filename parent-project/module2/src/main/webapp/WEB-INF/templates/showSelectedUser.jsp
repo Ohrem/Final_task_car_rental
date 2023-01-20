@@ -35,7 +35,7 @@
                         </p>
                         <hr style="width: 100%; color: #494533">
                         <p class="card-text">
-                        <form action="/hello/index.html" method="get">
+                        <form action="/hello/user-list.html?page=1" method="get">
                             <input type="submit" value="Back" class="btn btn-success btn-sm" style="width: 100%"/>
                         </form>
                         </p>
