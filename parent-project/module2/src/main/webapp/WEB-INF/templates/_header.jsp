@@ -13,8 +13,10 @@
 <body>
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
+        <a href="/hello/index.html">
         <img src="${pageContext.request.contextPath}/resources/imgs/67-670378_car-image-rent-a-car-logo.png"
              alt="" width="120" height="50"/>
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -29,39 +31,52 @@
                        aria-expanded="false">
                         Cars
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/hello/car-list-user.html?page=1">Show cars</a></li>
-                    </ul>
+                    <security:authorize access="hasRole('ADMIN')">
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/hello/car-list.html?page=1">Show cars</a></li>
+                        </ul>
+                    </security:authorize>
+                    <security:authorize access="hasRole('USER')">
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/hello/car-list-user.html?page=1">Show cars</a></li>
+                        </ul>
+                    </security:authorize>
+                    <security:authorize access="hasRole('ANONYMOUS')">
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/hello/car-list-user.html?page=1">Show cars</a></li>
+                        </ul>
+                    </security:authorize>
                 </li>
 
                 <li class="nav-item dropdown">
                     <security:authorize access="isAuthenticated()">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
                     </security:authorize>
                     <security:authorize access="!isAuthenticated()">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
                     </security:authorize>
                 </li>
                 <li class="nav-item dropdown">
                     <security:authorize access="!isAuthenticated()">
-                    <a class="nav-link" href="/hello/register.html">Register</a>
+                        <a class="nav-link" href="/hello/register.html">Register</a>
                     </security:authorize>
                     <security:authorize access="hasRole('USER')">
-                    <a class="nav-link" href="/hello/myProfile.html">My profile</a>
+                        <a class="nav-link" href="/hello/myProfile.html">My profile</a>
                     </security:authorize>
                 </li>
-                    <security:authorize access="hasRole('ADMIN')">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        ADMIN PANEL
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/hello/user-list.html?page=1">ADMIN User changes</a></li>
-                        <li><a class="dropdown-item" href="/hello/car-list.html?page=1">ADMIN Car changes</a></li>
-                        <li><a class="dropdown-item" href="/hello/order-list.html?page=1">ADMIN Order changes</a></li>
-                    </ul>
-                </li>
+                <security:authorize access="hasRole('ADMIN')">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            ADMIN PANEL
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/hello/user-list.html?page=1">ADMIN User changes</a></li>
+                            <li><a class="dropdown-item" href="/hello/car-list.html?page=1">ADMIN Car changes</a></li>
+                            <li><a class="dropdown-item" href="/hello/order-list.html?page=1">ADMIN Order changes</a>
+                            </li>
+                        </ul>
+                    </li>
                 </security:authorize>
             </ul>
             <img src="${pageContext.request.contextPath}/resources/imgs/user_icon_150670.png" alt="" width="25"
@@ -72,10 +87,9 @@
             <security:authorize access="!isAuthenticated()">
                 <a class="nav-link disabled">Welcome&nbsp;anonymous </a>
             </security:authorize>
-            <%--            <form class="d-flex" role="search" action="/hello/search.do" method="post">--%>
-            <%--                <input class="form-control me-2" type="search" name="pname" placeholder="Search" aria-label="Search">--%>
-            <%--                <button class="btn btn-outline-success" type="submit">Search</button>--%>
-            <%--            </form>--%>
+
         </div>
     </div>
 </nav>
+</body>
+</html>

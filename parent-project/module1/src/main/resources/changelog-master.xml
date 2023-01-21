@@ -140,7 +140,8 @@
                    ('8', 'BMW', 'D320', 'black', '30', true),
                    ('9', 'Hyundai', 'Elantra', 'white', '55', true),
                    ('10', 'Zhiguli', 'zhiga', 'white', '5', true),
-                   ('11', 'Lamborghini', 'Aventador', 'green', '150', true);
+                   ('11', 'Lamborghini', 'Aventador', 'green', '150', true),
+                   ('12', 'BMW', 'M8 Grand Coupe Competition', 'blue', '100', true);
         </sql>
     </changeSet>
     <changeSet id="10" author="ohrem25032002@gmail.com">
