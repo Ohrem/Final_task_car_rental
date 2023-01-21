@@ -88,7 +88,7 @@ public class CreateOrderController {
             if (user.getOrderEntity().getPaymentEntity() == null) {
                 return new ModelAndView("createPaymentEntity");
             }
-            modelAndView = new ModelAndView("userResultInfo");
+            modelAndView = new ModelAndView("redirect:/userResultInfo.html");
             modelAndView.addObject("paymentSum", paymentEntityService.countFinalSum(user.getOrderEntity()));
             modelAndView.addObject("restPayment", user.getOrderEntity().getPaymentEntity().getPaymentSum());
             modelAndView.addObject("orderCar", user.getOrderEntity().getCarEntity());
