@@ -48,7 +48,7 @@
                         </div>
                     </form>
                     <div class="col-3" style="margin-left: 328px; margin-top: -47px">
-                        <form action="index.html" method="get">
+                        <form action="hello/index.html" method="get">
                             <button type="button" class="btn btn-primary btn-sm" style="width: 100%">Back to main
                             </button>
                         </form>

@@ -38,9 +38,12 @@
                         <form action="/hello/updateMyProfile.html" method="get">
                             <input type="submit" value="Update profile" class="btn btn-success btn-sm" style="width: 100%"/>
                         </form>
-                        <form action="/hello/index.html" method="get">
-                            <input type="submit" value="Back" class="btn btn-success btn-sm" style="width: 100%"/>
+                        <form action="addBalance.html">
+                            <input type="submit" value="Add money" class="btn btn-warning btn-sm " style="width: 100%"/>
                         </form>
+                            <form action="/hello/index.html" method="get">
+                                <input type="submit" value="Back" class="btn btn-primary btn-sm active" style="width: 100%"/>
+                            </form>
                         </p>
                     </div>
                 </div>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataset>
+    <car id="98" brand="Mercedes" model="GLE"
+              color="blue" price="93.21" isAvailable="false"/>
+    <car id="99" brand="Volvo" model="V60 crossCountry"
+         color="red" price="93.21" isAvailable="true"/>
+    <car id="100" brand="Audi" model="RS6"
+         color="dark blue" price="120.12" isAvailable="true"/>
+</dataset>

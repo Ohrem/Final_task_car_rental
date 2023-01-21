@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataset>
+    <orders id="1" begin_date="2023-01-01" end_date="2023-01-06"
+         message="first message"/>
+    <orders id="2" begin_date="2023-02-10" end_date="2023-02-15"
+         message="second message"/>
+    <orders id="3" begin_date="2023-01-15" end_date="2023-01-30"
+         message="third message"/>
+</dataset>

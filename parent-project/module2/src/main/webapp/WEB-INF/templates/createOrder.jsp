@@ -63,46 +63,8 @@
                     </div>
                 </div>
             </main>
-
-
-            <%--        <div class="container-form">--%>
-            <%--            <form method="post" action="/hello/createOrder.html">--%>
-            <%--                <div class="form-row">--%>
-            <%--                    <div class="row">--%>
-            <%--                        <div class="col-sm-5">--%>
-            <%--                            <input type="date" id="begin-date" name="beginDate" class="form-control">--%>
-            <%--                            <label for="begin-date">Begin date</label>--%>
-            <%--                        </div>--%>
-            <%--                        <div class="col-sm-5">--%>
-            <%--                            <input id="end-date" type="date" name="endDate" class="form-control">--%>
-            <%--                            <label for="end-date">End date</label>--%>
-            <%--                        </div>--%>
-            <%--                    </div>--%>
-            <%--                    <div class="row">--%>
-            <%--                        <div class="col sm-5">--%>
-            <%--                            <select class="form-control" id="exampleFormControlSelect1" name="carId">--%>
-            <%--                                <c:forEach items="${cars}" var="car">--%>
-            <%--                                    <option value="${car.id}">${car.brand}, ${car.model}, ${car.color}, ${car.price}</option>--%>
-            <%--                                </c:forEach>--%>
-            <%--                            </select>--%>
-            <%--                        </div>--%>
-            <%--                        <div class="col sm-5">--%>
-            <%--                            <input id="user-message" type="text" name="message" class="form-control">--%>
-            <%--                            <label for="user-message">Message</label>--%>
-            <%--                        </div>--%>
-            <%--                    </div>--%>
-            <%--                    <div class=<div class="input-group mb-3">--%>
-            <%--                        <button type="submit" class="btn btn-primary">Continue</button>--%>
-            <%--                    </div>--%>
-            <%--                </div>--%>
-            <%--            </form>--%>
-            <%--        </div>--%>
-
         </div>
     </div>
-    <%--    <footer>--%>
-    <%--        <jsp:include page="_footer_util.jsp"/>--%>
-    <%--    </footer>--%>
 </div>
 </body>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0/js/bootstrap.min.js"
