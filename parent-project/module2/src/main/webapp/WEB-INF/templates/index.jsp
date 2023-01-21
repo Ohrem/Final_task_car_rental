@@ -52,7 +52,7 @@
                         </div>
                         <div class="benefits-secondary_text"
                              style="margin-top: 8px; font-size: 16px; line-height: 24px; width: 600px">
-                            sorting TODO
+                            We offer something unique, something special, something just for you.
                         </div>
                     </div>
                 </div>
@@ -68,9 +68,7 @@
                                  alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Show cars</h5>
-                                <p class="card-text"> Here you can see information about available cars. Pagination,
-                                    in-page search and filtering implemented.</p>
-
+                                <p class="card-text"> Here you can see information about available cars. Pagination and information about each car implemented.</p>
                                 <security:authorize access="hasRole('ADMIN')">
                                     <div class="d-grid gap-2 d-md-block">
                                         <a href="/hello/car-list.html?page=1" class="btn btn-primary">Click here</a>
@@ -125,33 +123,7 @@
             </div>
         </div>
         <div style="margin-top: 50px">
-
         </div>
-<%--        <table style="  width:100%" class="table">--%>
-<%--            <tr>--%>
-<%--                <th>Available Cars</th>--%>
-<%--            </tr>--%>
-<%--            <tr style="font-family: Serif; font-weight: bold">--%>
-<%--                <td><p>Brand</p></td>--%>
-<%--                <td><p>Model</p></td>--%>
-<%--                <td><p>Color</p></td>--%>
-<%--                <td><p>Price per day</p></td>--%>
-<%--                <td><p>About car</p></td>--%>
-<%--                <td><p>Click for rent</p></td>--%>
-<%--            </tr>--%>
-<%--            <c:forEach items="${cars}" var="car">--%>
-<%--                <tr>--%>
-<%--                    <td><c:out value="${car.brand}"/></td>--%>
-<%--                    <td><c:out value="${car.model}"/></td>--%>
-<%--                    <td><c:out value="${car.color}"/></td>--%>
-<%--                    <td><c:out value="${car.price}"/></td>--%>
-<%--                    <td><a href="${car.id}/viewCar.html" class="btn btn-light btn-sm active" role="button"--%>
-<%--                           aria-pressed="true">About the car</a></td>--%>
-<%--                    <td><a href="createOrder.html" class="btn btn-primary btn-sm active" role="button"--%>
-<%--                           aria-pressed="true">Rent car</a></td>--%>
-<%--                </tr>--%>
-<%--            </c:forEach>--%>
-<%--        </table>--%>
         <footer>
             <jsp:include page="_footer.jsp"/>
         </footer>

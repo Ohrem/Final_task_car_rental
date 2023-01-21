@@ -40,7 +40,7 @@
                             <image src="/hello/image/${car.id}/carPhoto.jpg" class="img-car"
                                    style="width: 150px; height: 80px"></image>
                         </td>
-                        <td><a href="${car.id}/viewCar.html" class="btn btn-light btn-sm active" role="button"
+                        <td><a href="${car.id}/viewCar.html" class="btn btn-primary btn-sm active" role="button"
                                aria-pressed="true">About the car</a></td>
                     </tr>
                 </c:forEach>

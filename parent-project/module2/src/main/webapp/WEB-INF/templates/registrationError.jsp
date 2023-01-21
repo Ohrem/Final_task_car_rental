@@ -17,7 +17,7 @@
           <hr style="width: 100%; color: #ff3b3b">
           <h3 class="card-text">Password and/or repeated password do not match or null, or user already exists!</h3>
           <hr style="width: 100%; color: #ff5151">
-          <form method="get" action="hello/register.html">
+          <form method="get" action="register.html">
             <input type="submit" value="Try again" class="btn btn-danger btn-lg" style="width: 50%"/>
           </form>
         </div>

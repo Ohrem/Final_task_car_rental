@@ -31,7 +31,7 @@
                         <hr style="width: 100%; color: #ffc7cb">
                         <p class="card-text">
                             <a href="addBalance.html" class="btn btn-danger btn-sm active" role="button"
-                                                aria-pressed="true">Add balance</a>
+                               aria-pressed="true">Add balance</a>
                         </p>
                     </div>
                 </div>
@@ -47,16 +47,10 @@
                             <button class="btn btn-success btn-sm" type="submit" style="width: 100%">Next</button>
                         </div>
                     </form>
-                    <div class="col-3" style="margin-left: 328px; margin-top: -47px">
-                        <form action="hello/index.html" method="get">
-                            <button type="button" class="btn btn-primary btn-sm" style="width: 100%">Back to main
-                            </button>
-                        </form>
-                    </div>
                 </div>
-            </main>
-        </div>
+        </main>
     </div>
+</div>
 </div>
 
 </main>

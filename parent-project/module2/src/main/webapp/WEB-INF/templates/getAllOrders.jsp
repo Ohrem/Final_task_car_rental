@@ -4,7 +4,7 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
     <title>All Users</title>
 </head>
 <body>
@@ -22,6 +22,7 @@
                 <thead>
                 <tr>
                     <th scope="col">Id</th>
+                    <th scope="col">Name of user</th>
                     <th scope="col">Begin date</th>
                     <th scope="col">End date</th>
                     <th scope="col">Message</th>
@@ -33,37 +34,38 @@
                 <c:forEach items="${orders}" var="order">
                     <tr style="width:100%">
                         <td><c:out value="${order.id}"/></td>
+                        <td><c:out value="${order.userEntity.name}"/></td>
                         <td><c:out value="${order.beginDate}"/></td>
                         <td><c:out value="${order.endDate}"/></td>
                         <td><c:out value="${order.message}"/></td>
-                        <td>
-                            <div class="btn-group dropend">
-                                <button type="button" class="btn btn-sm btn-success dropdown-toggle"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                    Actions
-                                </button>
-                                <ul class="dropdown-menu" style="">
-                                    <li>
-                                        <form method="get" action="/hello/${order.id}/updateOrderAdmin.html">
-                                            <input type="hidden" name="order_id" value="${order.id}">
-                                            <input class="dropdown-item" type="submit" value="Update">
-                                        </form>
-                                    </li>
-                                    <li>
-                                        <form method="get" action="/hello/${order.id}/deleteOrderAdmin.html">
-                                            <input type="hidden" name="order_id" value="${order.id}">
-                                            <input class="dropdown-item" type="submit" value="Delete">
-                                        </form>
-                                    </li>
-                                    <li>
-                                        <form method="get" action="/hello/${order.id}/viewOrderAdmin.html">
-                                            <input type="hidden" name="order_id" value="${order.id}">
-                                            <input class="dropdown-item" type="submit" value="View user">
-                                        </form>
-                                    </li>
-                                </ul>
-                            </div>
-                        </td>
+                    <td>
+                        <div class="btn-group dropend">
+                            <button type="button" class="btn btn-sm btn-success dropdown-toggle"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                Actions
+                            </button>
+                            <ul class="dropdown-menu" style="">
+                                <li>
+                                    <form method="get" action="/hello/${order.id}/updateOrderAdmin.html">
+                                        <input type="hidden" name="order_id" value="${order.id}">
+                                        <input class="dropdown-item" type="submit" value="Update">
+                                    </form>
+                                </li>
+                                <li>
+                                    <form method="get" action="/hello/${order.id}/deleteOrderAdmin.html">
+                                        <input type="hidden" name="order_id" value="${order.id}">
+                                        <input class="dropdown-item" type="submit" value="Delete">
+                                    </form>
+                                </li>
+                                <li>
+                                    <form method="get" action="/hello/${order.id}/viewOrderAdmin.html">
+                                        <input type="hidden" name="order_id" value="${order.id}">
+                                        <input class="dropdown-item" type="submit" value="View order">
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -74,8 +76,7 @@
 </div>
 <div class="pagination">
     <c:if test="${currentPage != 1}">
-        <td style="font-weight: bold; font-size: large; margin-right: 10px"><a class="previous"
-                href="order-list.html?page=${currentPage - 1}" style="color: mediumblue; font-size: large">Previous</a>
+        <td style="font-weight: bold; font-size: large; margin-right: 10px"><a class="previous" href="order-list.html?page=${currentPage - 1}" style="color: mediumblue; font-size: large">Previous</a>
         </td>
     </c:if>
 

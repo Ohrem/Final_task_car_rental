@@ -15,7 +15,7 @@
     <div class="col-md-6 mx-auto">
         <div class="row" style="margin: 10px 0 0">
             <h4 style="padding: 0;">
-                Update User
+                Update Order
             </h4>
         </div>
         <div class="row" style="margin-top: 10px">
@@ -43,13 +43,6 @@
         </div>
     </div>
 </div>
-<%--<form method="post" action="/hello/updateOrderAdmin.html">--%>
-<%--    <input type="hidden" name="orderId" value="${orderId}">--%>
-<%--    <input type="date" name="beginDate">--%>
-<%--    <input type="date" name="endDate">--%>
-<%--    <input type="text" name="message">--%>
-<%--    <input type="submit" value="Submit">--%>
-<%--</form>--%>
 
 </body>
 </html>

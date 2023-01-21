@@ -15,14 +15,13 @@ public class WebConfiguration {
     @Bean
     public InternalResourceViewResolver internalResourceViewResolver() {
         return new InternalResourceViewResolver("/WEB-INF/templates/", ".jsp");
-//        return new InternalResourceViewResolver("/pages/",".jsp");
     }
 
 
     @Bean(name = "multipartResolver")
     public CommonsMultipartResolver multipartResolver() {
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-        multipartResolver.setMaxUploadSize(1_000_000);
+        multipartResolver.setMaxUploadSize(10_000_000);
         return multipartResolver;
     }
 }

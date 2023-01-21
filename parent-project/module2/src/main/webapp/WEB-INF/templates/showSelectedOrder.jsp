@@ -24,8 +24,8 @@
                         <hr style="width: 100%; color: #494533">
                         <h5 class="card-text">Message: ${message}</h5>
                         <hr style="width: 100%; color: #494533">
-                        <form action="/hello/order-list.html?page=1" method="get">
-                            <input type="submit" value="Back" class="btn btn-success btn-sm" style="width: 100%"/>
+                        <form action="/hello/index.html" method="get">
+                            <input type="submit" value="Back to main" class="btn btn-success btn-sm" style="width: 100%"/>
                         </form>
                     </div>
                 </div>
